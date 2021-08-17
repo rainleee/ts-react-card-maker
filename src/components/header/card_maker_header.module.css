@@ -1,0 +1,14 @@
+@value makerGreen from "../../common/colors.css";
+@value makerWhite from "../../common/colors.css";
+
+.container {
+  background-color: makerGreen;
+  display: block;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  color: makerWhite;
+  font-weight: bold;
+}

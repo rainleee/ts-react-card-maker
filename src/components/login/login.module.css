@@ -1,0 +1,31 @@
+@value makerWhite from "../../common/colors.css";
+@value makerGreen from "../../common/colors.css";
+@value makerShadow from "../../common/colors.css";
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  color: makerBlack;
+  font-weight: bold;
+  margin: 1.875rem 0;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.login__btn {
+  width: 100%;
+  border: 3px solid makerGreen;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background-color: makerWhite;
+}
+
+.login__btn:hover {
+  cursor: pointer;
+  background-color: makerShadow;
+}
