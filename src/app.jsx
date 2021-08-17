@@ -4,7 +4,7 @@ import CardMakerHeader from "./components/header/card_maker_header";
 import Login from "./components/login/login";
 
 function App() {
-  // header / body / footer html components 제작
+  const handleGoogleLogin = () => {};
   return (
     <>
       <header>
