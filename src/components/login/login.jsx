@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./login.module.css";
-import firebase from "firebase";
 
-const Login = () => {
-  const googleLogin = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
+const Login = ({ authService }) => {
+  const onLogin = event => {
+    authService //
+      .login(event.currentTarget.textContent);
   };
 
   return (
@@ -15,13 +15,16 @@ const Login = () => {
       <div className={`${styles.login} ${styles.google}`}>
         <button
           className={`${styles.login__btn} ${styles.google__btn}`}
-          onClick={googleLogin}
+          onClick={onLogin}
         >
           Google
         </button>
       </div>
       <div className={`${styles.login} ${styles.github}`}>
-        <button className={`${styles.login__btn} ${styles.github__btn}`}>
+        <button
+          className={`${styles.login__btn} ${styles.github__btn}`}
+          onClick={onLogin}
+        >
           Github
         </button>
       </div>
