@@ -3,9 +3,9 @@
 
 .header {
   width: 100%;
+  text-align: center;
   padding: headerFooterMargin;
   background-color: makerGreen;
-  text-align: center;
   position: relative;
 }
 

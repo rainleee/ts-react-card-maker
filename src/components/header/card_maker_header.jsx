@@ -1,14 +1,10 @@
 import React from "react";
 import styles from "./card_maker_header.module.css";
 
-const CardMakerHeader = ({ loginState, onLogout }) => {
-  const clickLogoutBtn = () => {
-    onLogout();
-  };
-
+const CardMakerHeader = ({ onLogout }) => {
   return (
     <header className={styles.header}>
-      {loginState && (
+      {onLogout && (
         <div className={styles.logout__container}>
           <button className={styles.logout__btn} onClick={onLogout}>
             Logout
