@@ -3,10 +3,10 @@ import styles from "./card_maker_header.module.css";
 
 const CardMakerHeader = () => {
   return (
-    <section className={styles.container}>
-      <img src="public/favicon.ico" alt="card-image" />
+    <header className={styles.header}>
+      <img className={styles.logo} src="/images/logo.png" alt="logo" />
       <h1 className={styles.title}>Business Card Maker</h1>
-    </section>
+    </header>
   );
 };
 

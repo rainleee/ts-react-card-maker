@@ -1,10 +1,16 @@
-@value makerGreen from "../../common/colors.css";
-@value makerWhite from "../../common/colors.css";
+@value makerGreen,makerWhite from "../../common/colors.css";
+@value headerFooterMargin from "../../common/size.css";
 
-.container {
+.header {
+  width: 100%;
+  padding: headerFooterMargin;
   background-color: makerGreen;
-  display: block;
-  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.logo {
+  width: 3rem;
 }
 
 .title {

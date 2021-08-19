@@ -1,8 +1,11 @@
-@value makerGreen from "../../common/colors.css";
-@value makerWhite from "../../common/colors.css";
+@value makerGreen, makerWhite from "../../common/colors.css";
+@value headerFooterMargin from "../../common/size.css";
 
-.container {
+.footer {
+  width: 100%;
   background-color: makerGreen;
+  text-align: center;
+  padding: headerFooterMargin;
 }
 
 .title {

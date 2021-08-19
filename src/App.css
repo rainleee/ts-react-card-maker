@@ -1,7 +1,0 @@
-@value mediaQuery from "src/common/size.css";
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

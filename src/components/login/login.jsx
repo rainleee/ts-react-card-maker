@@ -1,34 +1,35 @@
 import React from "react";
 import styles from "./login.module.css";
+import Footer from "../footer/footer";
+import CardMakerHeader from "../header/card_maker_header";
 
 const Login = ({ authService }) => {
   const onLogin = event => {
     authService //
-      .login(event.currentTarget.textContent);
+      .login(event.currentTarget.textContent)
+      .then(console.log);
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.title}>
-        <h1>Login</h1>
-      </div>
-      <div className={`${styles.login} ${styles.google}`}>
-        <button
-          className={`${styles.login__btn} ${styles.google__btn}`}
-          onClick={onLogin}
-        >
-          Google
-        </button>
-      </div>
-      <div className={`${styles.login} ${styles.github}`}>
-        <button
-          className={`${styles.login__btn} ${styles.github__btn}`}
-          onClick={onLogin}
-        >
-          Github
-        </button>
-      </div>
-    </div>
+    <section className={styles.login}>
+      <CardMakerHeader />
+      <section>
+        <h1 className={styles.title}>Login</h1>
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <button className={styles.button} onClick={onLogin}>
+              Google
+            </button>
+          </li>
+          <li className={styles.item}>
+            <button className={styles.button} onClick={onLogin}>
+              Github
+            </button>
+          </li>
+        </ul>
+      </section>
+      <Footer />
+    </section>
   );
 };
 
