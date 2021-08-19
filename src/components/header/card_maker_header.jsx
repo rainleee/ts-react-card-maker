@@ -1,12 +1,18 @@
 import React from "react";
 import styles from "./card_maker_header.module.css";
 
-const CardMakerHeader = ({ loginState }) => {
+const CardMakerHeader = ({ loginState, onLogout }) => {
+  const clickLogoutBtn = () => {
+    onLogout();
+  };
+
   return (
     <header className={styles.header}>
-      {!loginState && (
+      {loginState && (
         <div className={styles.logout__container}>
-          <button className={styles.logout__btn}>Logout</button>
+          <button className={styles.logout__btn} onClick={onLogout}>
+            Logout
+          </button>
         </div>
       )}
       <img className={styles.logo} src="/images/logo.png" alt="logo" />

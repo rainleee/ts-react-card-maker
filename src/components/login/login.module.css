@@ -23,6 +23,14 @@
   padding: 0.5rem;
 }
 
+.main__contents {
+  height: 300px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .item {
   margin-bottom: 0.5em;
 }
