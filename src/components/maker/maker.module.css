@@ -17,6 +17,7 @@
 
 @media screen and (max-width: mediaQuery) {
   .container {
+    height: 100%;
     flex-direction: column;
   }
 }

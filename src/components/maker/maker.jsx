@@ -12,26 +12,26 @@ const Maker = ({ authService }) => {
       id: "1",
       name: "leeminwoo",
       company: "kakao",
-      backgroundColor: "green",
-      rank: "developer",
+      backgroundColor: "black",
+      rank: "developer1",
       email: "rainlee4401@gmail.com",
       comment: "안녕하세요 지금은 테스트중이랍니다",
     },
     {
       id: "2",
       name: "leeminwoo2",
-      company: "kakao",
-      backgroundColor: "green",
-      rank: "developer",
+      company: "kakao2",
+      backgroundColor: "red",
+      rank: "developer2",
       email: "rainlee4401@gmail.com",
       comment: "안녕하세요 지금은 테스트중이랍니다",
     },
     {
       id: "3",
       name: "leeminwoo3",
-      company: "kakao",
+      company: "kakao3",
       backgroundColor: "green",
-      rank: "developer",
+      rank: "develope3r",
       email: "rainlee4401@gmail.com",
       comment: "안녕하세요 지금은 테스트중이랍니다",
     },
@@ -56,7 +56,7 @@ const Maker = ({ authService }) => {
       <CardMakerHeader onLogout={onLogout} />
       <div className={styles.container}>
         <Editor cards={cards} />
-        <Preview />
+        <Preview cards={cards} />
       </div>
       <Footer />
     </section>

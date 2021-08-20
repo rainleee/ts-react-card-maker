@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0 8.125rem 1.25rem;
+  background-color: black;
+}
+
+.logo__box {
+  /* background-color: blue; */
+  margin: 1.25rem 0.625rem 1.25rem 1.25rem;
+}
+
+.log__img {
+  width: 12.5rem;
+  border-radius: 50%;
+}
+
+.contents {
+  display: flex;
+  flex-flow: column;
+  flex: 2;
+  padding: 1.25rem 0;
+  margin: 1.25rem 0.625rem 1.25rem 1.25rem;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.3125rem;
+}
+
+.company,
+.rank,
+.email,
+.comment {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 0.625rem;
+}
+
+.company {
+  padding-bottom: 0.625rem;
+  border-bottom: 0.0625rem solid white;
+}

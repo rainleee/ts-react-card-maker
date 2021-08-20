@@ -2,15 +2,13 @@ import React from "react";
 import styles from "./card_maker_write.module.css";
 
 const CardMakerWrite = ({ card }) => {
-  console.log("cards");
-  console.log(card);
   return (
     <section className={styles.container}>
       <div className={styles.info__row1}>
         <input type="text" placeholder="이름" value={card.name} />
         <input type="text" placeholder="회사명" value={card.company} />
         <select className={styles.select} name="background">
-          <option value="">배경색을 선택하세요</option>
+          <option value={card.backgroundColor}>{card.backgroundColor}</option>
           <option value="dark">dark</option>
           <option value="white">white</option>
           <option value="green">green</option>
