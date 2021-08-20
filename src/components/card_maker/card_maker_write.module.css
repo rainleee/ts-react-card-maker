@@ -1,0 +1,61 @@
+@value makerWhite, makerGrey, makerLightPink, makerGreen from "../../common/colors.css";
+
+.container {
+  position: relative;
+  border: 1px solid black;
+  margin: 0 20px 20px;
+}
+
+.info__row1,
+.info__row2,
+.info__row3,
+.info__row4 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+}
+
+.info__row1 > input,
+.info__row1 > select,
+.info__row2 input,
+.info__row3 .comment,
+.info__row4 button {
+  flex: 1;
+}
+
+/* .select  */
+input::placeholder,
+textarea::placeholder {
+  color: makerGrey;
+}
+
+.comment {
+  resize: none;
+  padding: 10px;
+  outline: 0;
+}
+
+input {
+  padding: 10px;
+  height: 25px;
+  outline: 0;
+}
+
+.select {
+  outline: 0;
+}
+
+.image__upload,
+.delete {
+  height: 40px;
+}
+
+.image__upload {
+  background-color: makerLightPink;
+}
+
+.delete {
+  background-color: makerGreen;
+  color: makerWhite;
+}

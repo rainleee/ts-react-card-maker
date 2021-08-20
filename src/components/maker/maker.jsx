@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Editor from "../editor/editor";
 import Footer from "../footer/footer";
@@ -7,6 +7,36 @@ import Preview from "../preview/preview";
 import styles from "./maker.module.css";
 
 const Maker = ({ authService }) => {
+  const [cards, setCards] = useState([
+    {
+      id: "1",
+      name: "leeminwoo",
+      company: "kakao",
+      backgroundColor: "green",
+      rank: "developer",
+      email: "rainlee4401@gmail.com",
+      comment: "안녕하세요 지금은 테스트중이랍니다",
+    },
+    {
+      id: "2",
+      name: "leeminwoo2",
+      company: "kakao",
+      backgroundColor: "green",
+      rank: "developer",
+      email: "rainlee4401@gmail.com",
+      comment: "안녕하세요 지금은 테스트중이랍니다",
+    },
+    {
+      id: "3",
+      name: "leeminwoo3",
+      company: "kakao",
+      backgroundColor: "green",
+      rank: "developer",
+      email: "rainlee4401@gmail.com",
+      comment: "안녕하세요 지금은 테스트중이랍니다",
+    },
+  ]);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -25,7 +55,7 @@ const Maker = ({ authService }) => {
     <section className={styles.maker}>
       <CardMakerHeader onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor />
+        <Editor cards={cards} />
         <Preview />
       </div>
       <Footer />
