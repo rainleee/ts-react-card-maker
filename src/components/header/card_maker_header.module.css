@@ -1,4 +1,4 @@
-@value makerGreen,makerWhite,makerLightPink from "../../common/colors.css";
+@value makerGreen,makerWhite,makerLightPink,makerBlack from "../../common/colors.css";
 @value headerFooterMargin from "../../common/size.css";
 
 .header {
@@ -11,20 +11,23 @@
 
 .logout__container {
   position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
+  right: 0.7rem;
+  top: 0.7rem;
 }
 
 .logout__btn {
-  background-color: makerWhite;
+  color: makerWhite;
+  background-color: makerBlack;
   outline: 0;
-  border-radius: 5px;
+  border-radius: 0.625rem;
   border: none;
+  padding: 0.5rem;
 }
 
 .logout__btn:hover {
-  background-color: makerLightPink;
   cursor: pointer;
+  color: makerBlack;
+  background-color: makerLightPink;
 }
 
 .logo {
