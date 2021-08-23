@@ -2,13 +2,23 @@
 
 .preview {
   flex-basis: 50%;
-  background-color: rgb(128, 107, 76);
 }
 
 .title {
   font-size: 2rem;
   font-weight: bold;
-  margin: 0.8em 0;
+  margin: 0.8em 0 1em 0.8em;
   text-align: center;
   color: makerGreen;
+}
+
+.cards {
+  width: 100%;
+  /* height 설정 시 콘텐츠가 여러개 일 시 아래 흰색 여백이 존재하게 되어 따로 설정하지 않음 */
+  /* height: 100%; */
+  padding: 0.5em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }

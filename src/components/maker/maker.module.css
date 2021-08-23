@@ -17,6 +17,11 @@
 
 @media screen and (max-width: mediaQuery) {
   .container {
+    flex-direction: column;
+    /* height: 100%; */
+  }
+
+  .maker {
     height: 100%;
     flex-direction: column;
   }
