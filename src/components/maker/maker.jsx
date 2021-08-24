@@ -9,7 +9,7 @@ import styles from './maker.module.css';
 const Maker = ({ authService }) => {
   const [cards, setCards] = useState([
     {
-      id: '1',
+      id: 1,
       name: 'leeminwoo',
       company: 'kakao',
       theme: 'dark',
@@ -20,7 +20,7 @@ const Maker = ({ authService }) => {
       fileURL: null,
     },
     {
-      id: '2',
+      id: 2,
       name: 'leeminwoo2',
       company: 'kakao2',
       theme: 'light',
@@ -31,7 +31,7 @@ const Maker = ({ authService }) => {
       fileURL: null,
     },
     {
-      id: '3',
+      id: 3,
       name: 'leeminwoo3',
       company: 'kakao3',
       theme: 'colorful',
@@ -42,6 +42,10 @@ const Maker = ({ authService }) => {
       fileURL: null,
     },
   ]);
+
+  const handleAddChange = card => {
+    setCards([...cards, card]);
+  };
 
   const history = useHistory();
 
@@ -61,7 +65,7 @@ const Maker = ({ authService }) => {
     <section className={styles.maker}>
       <CardMakerHeader onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor cards={cards} />
+        <Editor cards={cards} onAddChange={handleAddChange} />
         <Preview cards={cards} />
       </div>
       <Footer />
