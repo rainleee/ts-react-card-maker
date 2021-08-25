@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Button from '../button/button';
 import ImageFileInput from '../image_file_input/image_file_input';
 import styles from './card_edit_form.module.css';
 
-const CardEditForm = ({ card }) => {
+const CardEditForm = ({ card, updateCard, deleteCard }) => {
+  const nameRef = useRef();
+  const companyRef = useRef();
+  const themeRef = useRef();
+  const titleRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+
   const {
     name, //
     company,
@@ -15,8 +22,25 @@ const CardEditForm = ({ card }) => {
     fileURL,
   } = card;
 
-  //submit event
-  const onSubmit = () => {};
+  //delete submit event
+  const onSubmit = event => {
+    event.preventDefault();
+    deleteCard(card);
+  };
+
+  const onChange = event => {
+    if (event.currentTarget === null) {
+      return;
+    }
+    event.preventDefault();
+
+    // console.log(event.currentTarget.name, event.currentTarget.value);
+
+    updateCard({
+      ...card,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
+  };
 
   return (
     <form className={styles.form}>
@@ -25,16 +49,26 @@ const CardEditForm = ({ card }) => {
         type="text"
         name="name"
         placeholder="이름"
-        defaultValue={name}
+        value={name}
+        ref={nameRef}
+        onChange={onChange}
       />
       <input
         className={styles.input}
         type="text"
         name="company"
         placeholder="회사명"
-        defaultValue={company}
+        value={company}
+        ref={companyRef}
+        onChange={onChange}
       />
-      <select className={styles.select} name="theme" defaultValue={theme}>
+      <select
+        className={styles.select}
+        name="theme"
+        value={theme}
+        ref={themeRef}
+        onChange={onChange}
+      >
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="colorful">Colorful</option>
@@ -44,21 +78,27 @@ const CardEditForm = ({ card }) => {
         type="text"
         name="title"
         placeholder="직급"
-        defaultValue={title}
+        value={title}
+        ref={titleRef}
+        onChange={onChange}
       />
       <input
         className={styles.input}
         type="text"
         name="email"
         placeholder="이메일"
-        defaultValue={email}
+        value={email}
+        ref={emailRef}
+        onChange={onChange}
       />
       <textarea
         className={styles.textarea}
         name="message"
         rows="3"
         placeholder="자기소개"
-        defaultValue={message}
+        value={message}
+        ref={messageRef}
+        onChange={onChange}
       />
       <div className={styles.fileInput}>
         <ImageFileInput />

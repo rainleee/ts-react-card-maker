@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Button from '../button/button';
 import ImageFileInput from '../image_file_input/image_file_input';
 import styles from './card_add_form.module.css';
 
-const CardAddForm = ({ onAddChange }) => {
+const CardAddForm = ({ addCard }) => {
   const nameRef = useRef();
   const companyRef = useRef();
   const themeRef = useRef();
@@ -12,22 +12,22 @@ const CardAddForm = ({ onAddChange }) => {
   const messageRef = useRef();
   const formRef = useRef();
 
+  //add submit event
   const onSubmit = event => {
     event.preventDefault();
 
     const card = {
-      id: new Date() || '',
+      id: Date.now() || '',
       name: nameRef.current.value || '',
       company: companyRef.current.value || '',
-      theme: themeRef.current.value || '',
+      theme: themeRef.current.value,
       title: titleRef.current.value || '',
       email: emailRef.current.value || '',
       message: messageRef.current.value || '',
       fileName: '',
       fileURL: '',
     };
-    console.log(formRef);
-    onAddChange(card);
+    addCard(card);
     formRef.current.reset();
   };
 
