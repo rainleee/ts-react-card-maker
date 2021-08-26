@@ -15,7 +15,6 @@ const Card = ({ card }) => {
     email,
     message,
     theme,
-    fileName,
     fileURL,
   } = card;
 

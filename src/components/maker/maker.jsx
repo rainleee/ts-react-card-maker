@@ -6,7 +6,7 @@ import CardMakerHeader from '../header/card_maker_header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
-const Maker = ({ authService }) => {
+const Maker = ({ FileInput, authService }) => {
   const [cards, setCards] = useState({
     1: {
       id: '1',
@@ -93,6 +93,7 @@ const Maker = ({ authService }) => {
           addCard={createOrUpdateCard}
           updateCard={createOrUpdateCard}
           deleteCard={deleteCard}
+          FileInput={FileInput}
         />
         <Preview cards={cards} />
       </div>

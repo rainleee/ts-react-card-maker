@@ -1,10 +1,10 @@
-import firebase from "firebase";
-import firebaseApp from "./firebase";
+import firebase from 'firebase';
+import firebaseApp from './firebase';
 
 /*
   2021.08.19
   firebase auth service class
-  작성자: 이민우 
+  author rainlee
 */
 class AuthService {
   //login service
