@@ -12,7 +12,9 @@ const authService = new AuthService();
 const httpClient = axios.create({
   baseURL: `https://api.cloudinary.com/v1_1/`,
 });
+
 const imageUploader = new ImageUploader(httpClient);
+
 const FileInput = props => (
   <ImageFileInput {...props} imageUploader={imageUploader} />
 );

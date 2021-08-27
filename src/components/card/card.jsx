@@ -4,9 +4,6 @@ import styles from './card.module.css';
 const DEFAULT_IMAGE = '/images/default_logo.png';
 
 const Card = ({ card }) => {
-  /* 
-  TODO. 배경화면 linear-gradient에 대해 알아보기(css 먹일때 background-color이 아니라 백그라운드로 해야됨)
-  */
   //구조분해할당
   const {
     name, //
