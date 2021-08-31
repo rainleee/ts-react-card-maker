@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
 import CardMakerHeader from '../header/card_maker_header';
@@ -7,6 +7,8 @@ import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
 const Maker = ({ FileInput, authService }) => {
+  const userId = useLocation().state.id;
+  //
   const [cards, setCards] = useState({
     1: {
       id: '1',
@@ -54,6 +56,10 @@ const Maker = ({ FileInput, authService }) => {
   });
 
   const createOrUpdateCard = card => {
+    //TODO: data의 같음의 무결성체크가 없이 그냥 무조건 업데이트하구있음. 고민해볼것
+    //firebase database new data set
+    authService.writeCardData(card, userId);
+
     setCards(cards => {
       const updated = { ...cards };
       updated[card.id] = card;
@@ -62,8 +68,6 @@ const Maker = ({ FileInput, authService }) => {
   };
 
   const deleteCard = card => {
-    console.log('card');
-    console.log(card);
     setCards(cards => {
       const updated = { ...cards };
       delete updated[card.id];

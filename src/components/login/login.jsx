@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import styles from "./login.module.css";
-import Footer from "../footer/footer";
-import CardMakerHeader from "../header/card_maker_header";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
+import styles from './login.module.css';
+import Footer from '../footer/footer';
+import CardMakerHeader from '../header/card_maker_header';
+import { useHistory } from 'react-router-dom';
 
 const Login = ({ authService }) => {
   const history = useHistory();
@@ -10,6 +10,7 @@ const Login = ({ authService }) => {
   useEffect(() => {
     authService //
       .onAuthChange(user => {
+        //go to maker
         user && goToMaker(user.uid);
       });
   });
@@ -17,12 +18,18 @@ const Login = ({ authService }) => {
   const onLogin = event => {
     authService //
       .login(event.currentTarget.textContent)
-      .then(data => goToMaker(data.user.uid));
+      .then(data => {
+        //TODO: 문법 질문해보기 && 를 이용해서 2개를 호출할 수 있는지.
+        //TODO: 데이터를 보관할때 암호화처리를 하는지.. 이런거 고민하기
+        !authService.isExistsUser(data.user.uid) &&
+          authService.writeUserData(data.user);
+        goToMaker(data.user.uid);
+      });
   };
 
   const goToMaker = userId => {
     history.push({
-      pathname: "/maker",
+      pathname: '/maker',
       state: { id: userId },
     });
   };
