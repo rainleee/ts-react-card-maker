@@ -3,5 +3,5 @@
 ## 해당 기술을 사용해서 구현하고 있습니다.
 - firebase realtime database - 실시간 동기화를 통한 NOSQL database 구현 
 - cloudinary storyge - image cloud storyge
-- react - 컴포넌트화를 통한 react 
+- react - 컴포넌트화를 통한 react , react state
 - 비동기처리 axios
