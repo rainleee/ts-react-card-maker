@@ -31,13 +31,10 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
   //login logic
   useEffect(() => {
     authService.onAuthChange(user => {
-      if (user) {
-        setUserId(user.uid);
-      } else {
-        history.push('/');
-      }
+      if (user) setUserId(user.uid);
+      else history.push('/');
     });
-  });
+  }, [authService, history, userId]);
 
   const createOrUpdateCard = card => {
     setCards(cards => {
