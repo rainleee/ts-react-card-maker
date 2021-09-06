@@ -1,7 +1,5 @@
 import firebaseApp from './firebase';
 
-const database = firebaseApp.database();
-
 /*
   2021.08.31
   firebase database connection class
@@ -9,29 +7,33 @@ const database = firebaseApp.database();
   */
 
 class DbConnection {
+  // TODO: 변경하기 미완성.
   isExistsUser(uid) {
-    const userInfo = database.ref('users/' + uid);
+    const userInfo = firebaseApp.database().ref('users/' + uid);
 
     userInfo.on('value', snapshot => {
       return snapshot.exists();
     });
   }
 
-  //firebase data write
-  writeUserData(user) {
+  //firebase user id save
+  // TODO: 변경하기 미완성.
+
+  /* writeUserData(user) {
     const { uid, email } = user;
 
     //TODO: read해서 data 비교해서 있으면 그냥 retrun 아니면 write
-    database.ref('users/' + uid).set({
-      uid,
-      email,
-    });
-  }
+    firebaseApp
+      .database()
+      .ref('users/' + uid)
+      .set({
+        uid,
+        email,
+      });
+  } */
 
-  //firebase data write
-  writeCardData(card, userId) {
-    console.log('writeCardData');
-    console.log(card);
+  //firebase data save
+  saveCard(userId, card) {
     const {
       id,
       name,
@@ -45,8 +47,7 @@ class DbConnection {
     } = card;
 
     //firebase write
-    //유저의 정보를 알고 그 유저의 데이터안에 cards => card로 박제할것.
-    database.ref(`users/${userId}/cards/${id}`).set({
+    firebaseApp.database().ref(`users/${userId}/cards/${id}`).set({
       id,
       name,
       company,
@@ -59,14 +60,23 @@ class DbConnection {
     });
   }
 
-  async readCardData(userId) {
-    const cards = await database.ref(`users/${userId}/cards`);
+  //firebase delete
+  removeCard(userId, card) {
+    const { id } = card;
+    firebaseApp.database().ref(`users/${userId}/cards/${id}`).remove();
+  }
 
-    cards.on('value', async snapshot => {
-      const data = snapshot.val();
-      console.log(data);
-      return await data;
+  //realtime sync
+  syncCards(userId, onUpdate) {
+    const cards = firebaseApp.database().ref(`users/${userId}/cards`);
+
+    cards.on('value', snapshot => {
+      const value = snapshot.val();
+      value && onUpdate(value);
     });
+
+    //off()를 이용해 불필요한 network 통신을 최소화
+    return () => cards.off();
   }
 }
 

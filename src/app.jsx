@@ -10,7 +10,7 @@ function App({ FileInput, authService, dbConnection }) {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <Login authService={authService} dbConnection={dbConnection} />
+            <Login authService={authService} />
           </Route>
           <Route path="/maker" exact>
             <Maker

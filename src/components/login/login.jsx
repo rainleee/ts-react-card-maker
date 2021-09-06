@@ -4,7 +4,7 @@ import Footer from '../footer/footer';
 import CardMakerHeader from '../header/card_maker_header';
 import { useHistory } from 'react-router-dom';
 
-const Login = ({ authService, dbConnection }) => {
+const Login = ({ authService }) => {
   const history = useHistory();
 
   useEffect(() => {
@@ -19,10 +19,6 @@ const Login = ({ authService, dbConnection }) => {
     authService //
       .login(event.currentTarget.textContent)
       .then(data => {
-        //TODO: 문법 질문해보기 && 를 이용해서 2개를 호출할 수 있는지.
-        //TODO: 데이터를 보관할때 암호화처리를 하는지.. 이런거 고민하기
-        !dbConnection.isExistsUser(data.user.uid) &&
-          dbConnection.writeUserData(data.user);
         goToMaker(data.user.uid);
       });
   };
