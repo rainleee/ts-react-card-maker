@@ -1,4 +1,4 @@
-import firebaseApp from './firebase';
+import { firebaseDatabase } from './firebase';
 
 /*
   2021.08.31
@@ -22,7 +22,7 @@ class DbConnection {
     } = card;
 
     //firebase write
-    firebaseApp.database().ref(`users/${userId}/cards/${id}`).set({
+    firebaseDatabase.ref(`users/${userId}/cards/${id}`).set({
       id,
       name,
       company,
@@ -38,12 +38,12 @@ class DbConnection {
   //firebase delete
   removeCard(userId, card) {
     const { id } = card;
-    firebaseApp.database().ref(`users/${userId}/cards/${id}`).remove();
+    firebaseDatabase.ref(`users/${userId}/cards/${id}`).remove();
   }
 
   //realtime sync
   syncCards(userId, onUpdate) {
-    const cards = firebaseApp.database().ref(`users/${userId}/cards`);
+    const cards = firebaseDatabase.ref(`users/${userId}/cards`);
 
     cards.on('value', snapshot => {
       const value = snapshot.val();
