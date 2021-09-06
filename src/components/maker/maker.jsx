@@ -6,46 +6,10 @@ import CardMakerHeader from '../header/card_maker_header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
-const Maker = ({ FileInput, authService }) => {
+const Maker = ({ FileInput, authService, dbConnection }) => {
   const userId = useLocation().state.id;
-  //
-  const [cards, setCards] = useState({
-    1: {
-      id: '1',
-      name: 'minwoo1111',
-      company: 'Samsung',
-      theme: 'light',
-      title: 'Software Engineer',
-      email: 'minwoo@gmail.com',
-      message: 'go for it',
-      fileName: 'ellie',
-      fileURL: null,
-    },
-    2: {
-      id: '2',
-      name: 'minwoo222',
-      company: 'Samsung',
-      theme: 'dark',
-      title: 'Software Engineer',
-      email: 'minwoo@gmail.com',
-      message: 'go for it',
-      fileName: 'ellie',
-      fileURL: null,
-    },
-    3: {
-      id: '3',
-      name: 'minwoo33',
-      company: 'Samsung',
-      theme: 'colorful',
-      title: 'Software Engineer',
-      email: 'minwoo@gmail.com',
-      message: 'go for it',
-      fileName: 'ellie',
-      fileURL: null,
-    },
-  });
-
   const history = useHistory();
+  const [cards, setCards] = useState({});
 
   useEffect(() => {
     authService.onAuthChange(user => {
@@ -58,13 +22,15 @@ const Maker = ({ FileInput, authService }) => {
   const createOrUpdateCard = card => {
     //TODO: data의 같음의 무결성체크가 없이 그냥 무조건 업데이트하구있음. 고민해볼것
     //firebase database new data set
-    authService.writeCardData(card, userId);
+    dbConnection.writeCardData(card, userId);
 
+    // console.log(cards);
     setCards(cards => {
       const updated = { ...cards };
       updated[card.id] = card;
       return updated;
     });
+    // return dbConnection.readCardData(userId);
   };
 
   const deleteCard = card => {
@@ -98,3 +64,39 @@ const Maker = ({ FileInput, authService }) => {
 };
 
 export default Maker;
+
+// const [cards, setCards] = useState({
+//   1: {
+//     id: '1',
+//     name: 'minwoo1111',
+//     company: 'Samsung',
+//     theme: 'light',
+//     title: 'Software Engineer',
+//     email: 'minwoo@gmail.com',
+//     message: 'go for it',
+//     fileName: 'ellie',
+//     fileURL: null,
+//   },
+//   2: {
+//     id: '2',
+//     name: 'minwoo222',
+//     company: 'Samsung',
+//     theme: 'dark',
+//     title: 'Software Engineer',
+//     email: 'minwoo@gmail.com',
+//     message: 'go for it',
+//     fileName: 'ellie',
+//     fileURL: null,
+//   },
+//   3: {
+//     id: '3',
+//     name: 'minwoo33',
+//     company: 'Samsung',
+//     theme: 'colorful',
+//     title: 'Software Engineer',
+//     email: 'minwoo@gmail.com',
+//     message: 'go for it',
+//     fileName: 'ellie',
+//     fileURL: null,
+//   },
+// });

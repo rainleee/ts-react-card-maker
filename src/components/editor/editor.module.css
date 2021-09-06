@@ -4,6 +4,7 @@
   flex-basis: 50%;
   border-right: 0.0625rem dashed makerLightGrey;
   padding: 0.5em 2em;
+  overflow-y: auto;
 }
 
 .title {

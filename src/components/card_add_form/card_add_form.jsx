@@ -35,7 +35,6 @@ const CardAddForm = ({ FileInput, addCard }) => {
       fileURL: file.fileURL || '',
     };
 
-    //firebase database set
     formRef.current.reset();
     setFile({
       fileName: null, //
