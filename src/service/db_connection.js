@@ -7,31 +7,6 @@ import firebaseApp from './firebase';
   */
 
 class DbConnection {
-  // TODO: 변경하기 미완성.
-  isExistsUser(uid) {
-    const userInfo = firebaseApp.database().ref('users/' + uid);
-
-    userInfo.on('value', snapshot => {
-      return snapshot.exists();
-    });
-  }
-
-  //firebase user id save
-  // TODO: 변경하기 미완성.
-
-  /* writeUserData(user) {
-    const { uid, email } = user;
-
-    //TODO: read해서 data 비교해서 있으면 그냥 retrun 아니면 write
-    firebaseApp
-      .database()
-      .ref('users/' + uid)
-      .set({
-        uid,
-        email,
-      });
-  } */
-
   //firebase data save
   saveCard(userId, card) {
     const {

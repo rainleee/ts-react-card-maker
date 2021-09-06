@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
 import CardMakerHeader from '../header/card_maker_header';
@@ -26,7 +26,7 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
       setCards(cards);
     });
     return () => stopSync();
-  }, [userId]);
+  }, [dbConnection, userId]);
 
   //login logic
   useEffect(() => {
