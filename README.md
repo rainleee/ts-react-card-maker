@@ -42,6 +42,7 @@
 - TypeScript 사용하기
 - function 문서정리
 - ESLint 사용하기
+- redux를 이용해서 상태관리하기
 
 ## 2.내가 취업하고자 하는 기업에서 원하는 역량 분석
 
