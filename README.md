@@ -1,4 +1,4 @@
-# firebase와 React를 이용한 명함만들기 프로젝트입니다. (react로 사용하여 만든프로젝트를 유지하고, TypeScript를 포함한 프로젝트로!! )
+# firebase와 React를 이용한 명함만들기 프로젝트입니다. (react로 사용하여 만든프로젝트를 유지하고, TypeScript를 포함한 프로젝트로!!! )
 
 ## 사용 Skills
 
