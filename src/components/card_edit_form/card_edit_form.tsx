@@ -1,40 +1,49 @@
-import React, { useRef } from 'react';
-import Button from '../button/button';
-import styles from './card_edit_form.module.css';
+import React, { useRef } from "react";
+import Button from "../button/button";
+import styles from "./card_edit_form.module.css";
 
-const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
-  const nameRef = useRef();
-  const companyRef = useRef();
-  const themeRef = useRef();
-  const titleRef = useRef();
-  const emailRef = useRef();
-  const messageRef = useRef();
+const CardEditForm = ({
+  FileInput,
+  card,
+  updateCard,
+  deleteCard,
+}: FormProps) => {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const themeRef = useRef<HTMLSelectElement>(null);
 
   const {
-    name, //
+    name,
     company,
     title,
     email,
     message,
     theme,
     fileName,
-  } = card;
+  }: CardMetaData = card;
 
-  const onFileChange = file => {
+  const onFileChange = (file: ImageFileInput) => {
     updateCard({
       ...card,
-      fileName: file.name,
-      fileURL: file.url,
+      fileName: file.fileName,
+      fileURL: file.fileURL,
     });
   };
 
   //delete submit event
-  const onSubmit = event => {
+  const onSubmit = (event: React.ChangeEvent<HTMLElement>) => {
     event.preventDefault();
     deleteCard(card);
   };
 
-  const onChange = event => {
+  const onChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     if (event.currentTarget === null) {
       return;
     }
@@ -98,7 +107,7 @@ const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
       <textarea
         className={styles.textarea}
         name="message"
-        rows="3"
+        rows={3}
         placeholder="자기소개"
         value={message}
         ref={messageRef}
@@ -110,6 +119,35 @@ const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
       <Button name="Delete" onClick={onSubmit} />
     </form>
   );
+};
+
+// TODO: react props after redux change
+interface FormProps {
+  FileInput: any;
+  card: any;
+  updateCard: any;
+  deleteCard: any;
+}
+
+/**
+ * image data type
+ */
+type ImageFileInput = {
+  fileName: string;
+  fileURL: string;
+};
+
+/**
+ * card data type
+ */
+type CardMetaData = {
+  name: string;
+  company: string;
+  title: string;
+  email: string;
+  message: string;
+  theme: string;
+  fileName: string;
 };
 
 export default CardEditForm;

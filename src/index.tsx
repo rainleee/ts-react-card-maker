@@ -19,9 +19,12 @@ const httpClient: AxiosInstance = axios.create({
 
 const imageUploader = new ImageUploader(httpClient);
 
-const FileInput= (props:any) => (
-  <ImageFileInput {...props} imageUploader={imageUploader} />
-);
+const FileInput = (props:any) => {
+  console.log(`FileInput props ${props}`);
+  console.log(props);
+  
+  return <ImageFileInput {...props} imageUploader={imageUploader} />
+};
 
 ReactDOM.render(
   <React.StrictMode>
