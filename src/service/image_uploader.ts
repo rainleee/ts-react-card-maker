@@ -1,25 +1,26 @@
-import { AxiosInstance, AxiosResponse } from 'axios';
+import { AxiosInstance } from "axios";
 
 /* 
 autor: rainlee
 description: cloudinary에 image upload를 위한 class
 */
+// TODO: 다시 타입 정의하기
 class ImageUploader {
-  private imageUploader : AxiosInstance;
+  private imageUploader: AxiosInstance;
 
   constructor(httpClient: AxiosInstance) {
     this.imageUploader = httpClient;
   }
 
   async upload(file: any) {
-    console.log('file');
+    console.log("file");
     console.log(typeof file);
-    
+
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
     formData.append(
-      'upload_preset',
-      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET as string
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET as string //TODO: casting 재정의
     );
 
     const response = await this.imageUploader.post(
@@ -33,4 +34,4 @@ class ImageUploader {
 
 export default ImageUploader;
 
-//업로딩 되는동안에는 로딩스피너 만들기
+// TODO: 업로딩 되는동안에는 로딩스피너 만들기
