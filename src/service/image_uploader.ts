@@ -13,9 +13,6 @@ class ImageUploader {
   }
 
   async upload(file: any) {
-    console.log("file");
-    console.log(typeof file);
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append(

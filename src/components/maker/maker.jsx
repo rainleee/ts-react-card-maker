@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Editor from '../editor/editor';
-import Footer from '../footer/footer';
-import CardMakerHeader from '../header/card_maker_header';
-import Preview from '../preview/preview';
-import styles from './maker.module.css';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import Editor from "../editor/editor";
+import Footer from "../footer/footer";
+import CardMakerHeader from "../header/card_maker_header";
+import Preview from "../preview/preview";
+import styles from "./maker.module.css";
 
 const Maker = ({ FileInput, authService, dbConnection }) => {
   const history = useHistory();
@@ -32,8 +32,9 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
   useEffect(() => {
     authService.onAuthChange(user => {
       if (user) setUserId(user.uid);
-      else history.push('/');
+      else history.push("/");
     });
+    // authService.onAuthChange();
   }, [authService, history, userId]);
 
   const createOrUpdateCard = card => {

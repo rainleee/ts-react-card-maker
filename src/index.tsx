@@ -1,11 +1,11 @@
-import axios, { AxiosInstance } from 'axios';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
-import ImageFileInput from './components/image_file_input/image_file_input';
-import AuthService from './service/auth_service';
-import DbConnection from './service/db_connection';
-import ImageUploader from './service/image_uploader';
+import axios, { AxiosInstance } from "axios";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./app";
+import ImageFileInput from "./components/image_file_input/image_file_input";
+import AuthService from "./service/auth_service";
+import DbConnection from "./service/db_connection";
+import ImageUploader from "./service/image_uploader";
 
 const authService = new AuthService();
 
@@ -19,11 +19,8 @@ const httpClient: AxiosInstance = axios.create({
 
 const imageUploader = new ImageUploader(httpClient);
 
-const FileInput = (props:any) => {
-  console.log(`FileInput props ${props}`);
-  console.log(props);
-  
-  return <ImageFileInput {...props} imageUploader={imageUploader} />
+const FileInput = (props: any) => {
+  return <ImageFileInput {...props} imageUploader={imageUploader} />;
 };
 
 ReactDOM.render(
@@ -34,5 +31,5 @@ ReactDOM.render(
       dbConnection={dbConnection}
     />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
