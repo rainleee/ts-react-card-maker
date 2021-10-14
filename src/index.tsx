@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
@@ -13,13 +13,13 @@ const authService = new AuthService();
 const dbConnection = new DbConnection();
 
 //cloudnary url
-const httpClient = axios.create({
+const httpClient: AxiosInstance = axios.create({
   baseURL: `https://api.cloudinary.com/v1_1/`,
 });
 
 const imageUploader = new ImageUploader(httpClient);
 
-const FileInput = props => (
+const FileInput= (props:any) => (
   <ImageFileInput {...props} imageUploader={imageUploader} />
 );
 
