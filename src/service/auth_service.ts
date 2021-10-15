@@ -1,4 +1,5 @@
 import { firebaseAuth, githubProvider, googleProvider } from "./firebase";
+import firebase from "firebase/app";
 
 /*
   2021.08.19
@@ -6,15 +7,26 @@ import { firebaseAuth, githubProvider, googleProvider } from "./firebase";
   author rainlee
   */
 
+// TODO: 이 타입들 나중에 한곳에 모아두고 import하기
 type CallbackFunction = (user: any) => void;
 
 // login 시 type
 type LoginProvider = typeof googleProvider | typeof githubProvider;
 
-class AuthService {
+type FirebaseAuthSign = Promise<firebase.auth.UserCredential>;
+
+// auth 시도 시 필수 function
+interface FirebaseAuthService {
+  login(providerName: string): FirebaseAuthSign;
+  onAuthChange(onUserChanged: Function): void;
+  logout(): Promise<void>;
+  getProvider(providerName: string): LoginProvider;
+}
+
+class AuthService implements FirebaseAuthService {
   //login service
-  // TODO: 타입정의하지 않음.
-  login(providerName: string) {
+  // TODO: 타입정의햇는데 from "./firebase"로 정의된 곳에서 뽑아오지 않아 import를 새로했음.
+  login(providerName: string): FirebaseAuthSign {
     const authProvider = this.getProvider(providerName);
     return firebaseAuth.signInWithPopup(authProvider);
   }

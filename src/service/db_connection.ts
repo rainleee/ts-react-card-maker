@@ -6,15 +6,34 @@ import { firebaseDatabase } from "./firebase";
   author rainlee
   */
 // TODO: doc작업 여기처럼 해놓고 params에 대해 써놓기
-class DbConnection {
+
+type CardMetaData = {
+  id: string;
+  theme: string;
+  name?: string;
+  company?: string;
+  title?: string;
+  email?: string;
+  message?: string;
+  fileName?: string;
+  fileURL?: string;
+};
+interface Database {
+  saveCard(userId: string, card: CardMetaData): void;
+  removeCard(userId: string, card: CardMetaData): void;
+  syncCards(userId: string, onUpdate: Function): void;
+}
+
+class DbConnection implements Database {
   //firebase data save
-  saveCard(userId, card) {
+  // TODO:  userID Patitail로 가져오는거 고민해보기
+  saveCard(userId: string, card: CardMetaData) {
     // TODO: card data type정의한것 합쳐야됨. 새로운파일 만들어서 관리할 것.
     const {
       id,
+      theme,
       name,
       company,
-      theme,
       title,
       email,
       message,
@@ -37,13 +56,14 @@ class DbConnection {
   }
 
   //firebase delete
-  removeCard(userId, card) {
+  removeCard(userId: string, card: CardMetaData) {
     const { id } = card;
     firebaseDatabase.ref(`users/${userId}/cards/${id}`).remove();
   }
 
   //realtime sync
-  syncCards(userId, onUpdate) {
+  // TODO: Functoin
+  syncCards(userId: string, onUpdate: Function) {
     const cards = firebaseDatabase.ref(`users/${userId}/cards`);
 
     cards.on("value", snapshot => {
