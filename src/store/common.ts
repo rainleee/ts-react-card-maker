@@ -1,5 +1,5 @@
-import AuthService from "../service/auth_service";
-import DbConnection from "../service/db_connection";
+import AuthService from '../service/auth_service';
+import DbConnection from '../service/db_connection';
 
 // App props type
 export type AppProps = {

@@ -4,7 +4,7 @@ import {
   firebaseAuth,
   githubProvider,
   googleProvider,
-} from "./firebase";
+} from './firebase';
 
 /*
   2021.08.19
@@ -49,9 +49,9 @@ class AuthService implements FirebaseAuthService {
 
   getProvider(providerName: string): LoginProvider {
     switch (providerName) {
-      case "Google":
+      case 'Google':
         return googleProvider;
-      case "Github":
+      case 'Github':
         return githubProvider;
       default:
         throw new Error(`not supported provider: ${providerName}`);

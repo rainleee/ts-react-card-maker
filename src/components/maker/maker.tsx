@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import Editor from "../editor/editor";
-import Footer from "../footer/footer";
-import CardMakerHeader from "../header/card_maker_header";
-import Preview from "../preview/preview";
-import styles from "./maker.module.css";
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { AppProps } from '../../store/common';
+import Editor from '../editor/editor';
+import Footer from '../footer/footer';
+import CardMakerHeader from '../header/card_maker_header';
+import Preview from '../preview/preview';
+import styles from './maker.module.css';
 
-const Maker = ({ FileInput, authService, dbConnection }) => {
+const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
   const history = useHistory();
   /* 
   optional chaining 연산자 ?. 는 체인의 각 참조가 유효한지 명시적으로 검증하지 않고, 
@@ -14,7 +15,10 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
   
   https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Optional_chaining
   */
-  const historyState = history?.location?.state;
+  type Temp = {
+    id: string;
+  };
+  const historyState: any = history?.location?.state;
   const [cards, setCards] = useState({});
   const [userId, setUserId] = useState(historyState && historyState.id);
 
@@ -22,7 +26,11 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
   useEffect(() => {
     if (!userId) return;
 
-    const stopSync = dbConnection.syncCards(userId, cards => {
+    // const stopSync = dbConnection.syncCards(userId, cards => {
+    //   setCards(cards);
+    // });
+
+    const stopSync = dbConnection.syncCards(userId, (cards: any) => {
       setCards(cards);
     });
     return () => stopSync();
@@ -32,14 +40,15 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
   useEffect(() => {
     authService.onAuthChange(user => {
       if (user) setUserId(user.uid);
-      else history.push("/");
+      else history.push('/');
     });
     // authService.onAuthChange();
   }, [authService, history, userId]);
 
-  const createOrUpdateCard = card => {
+  // TODO: card.id가 key값으로 들어가기때문에 타입에러가 발생함 keyof 키워드를 사용해서 구현해보기
+  const createOrUpdateCard = (card: any) => {
     setCards(cards => {
-      const updated = { ...cards };
+      const updated: any = { ...cards };
       updated[card.id] = card;
       return updated;
     });
@@ -49,9 +58,9 @@ const Maker = ({ FileInput, authService, dbConnection }) => {
     dbConnection.saveCard(userId, card);
   };
 
-  const deleteCard = card => {
+  const deleteCard = (card: any) => {
     setCards(cards => {
-      const updated = { ...cards };
+      const updated: any = { ...cards };
       delete updated[card.id];
       return updated;
     });

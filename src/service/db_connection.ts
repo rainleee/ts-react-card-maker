@@ -1,4 +1,4 @@
-import { firebaseDatabase } from "./firebase";
+import { firebaseDatabase } from './firebase';
 
 /*
   2021.08.31
@@ -21,7 +21,7 @@ type CardMetaData = {
 interface Database {
   saveCard(userId: string, card: CardMetaData): void;
   removeCard(userId: string, card: CardMetaData): void;
-  syncCards(userId: string, onUpdate: Function): void;
+  syncCards(userId: string, onUpdate: any): void;
 }
 
 class DbConnection implements Database {
@@ -62,11 +62,11 @@ class DbConnection implements Database {
   }
 
   //realtime sync
-  // TODO: Functoin
-  syncCards(userId: string, onUpdate: Function) {
+  // TODO: onUpdate 바꾸기
+  syncCards(userId: string, onUpdate: any) {
     const cards = firebaseDatabase.ref(`users/${userId}/cards`);
 
-    cards.on("value", snapshot => {
+    cards.on('value', snapshot => {
       const value = snapshot.val();
       value && onUpdate(value);
     });
