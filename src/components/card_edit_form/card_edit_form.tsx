@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import Button from "../button/button";
-import styles from "./card_edit_form.module.css";
+import React, { useRef } from 'react';
+import Button from '../button/button';
+import styles from './card_edit_form.module.css';
 
 const CardEditForm = ({
   FileInput,
@@ -28,8 +28,8 @@ const CardEditForm = ({
   const onFileChange = (file: ImageFileInput) => {
     updateCard({
       ...card,
-      fileName: file.fileName,
-      fileURL: file.fileURL,
+      fileName: file.name,
+      fileURL: file.url,
     });
   };
 
@@ -133,8 +133,8 @@ interface FormProps {
  * image data type
  */
 type ImageFileInput = {
-  fileName: string;
-  fileURL: string;
+  name: string;
+  url: string;
 };
 
 /**

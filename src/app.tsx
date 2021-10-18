@@ -5,7 +5,15 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Maker from './components/maker/maker';
 
 // function App({ FileInput, authService, dbConnection }): any {
-function App({ FileInput, authService, dbConnection }: { FileInput: any, authService: any, dbConnection: any }) {
+function App({
+  FileInput,
+  authService,
+  dbConnection,
+}: {
+  FileInput: any;
+  authService: any;
+  dbConnection: any;
+}) {
   return (
     <div className={styles.app}>
       <BrowserRouter>

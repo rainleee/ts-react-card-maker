@@ -1,4 +1,4 @@
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
 
 /* 
 autor: rainlee
@@ -14,9 +14,9 @@ class ImageUploader {
 
   async upload(file: any) {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
     formData.append(
-      "upload_preset",
+      'upload_preset',
       process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET as string //TODO: casting 재정의
     );
 
