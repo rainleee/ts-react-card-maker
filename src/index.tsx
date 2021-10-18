@@ -19,7 +19,7 @@ const httpClient: AxiosInstance = axios.create({
 
 const imageUploader = new ImageUploader(httpClient);
 
-const FileInput = (props: any) => {
+const FileInput = (props: any): JSX.Element => {
   return <ImageFileInput {...props} imageUploader={imageUploader} />;
 };
 
