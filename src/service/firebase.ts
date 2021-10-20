@@ -21,7 +21,7 @@ const firebaseConfig: FirebaseConfig = {
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-export type FirebaseUser = firebase.User;
+export type FirebaseUser = firebase.User | null;
 export type UserCredential = Promise<firebase.auth.UserCredential>;
 export const firebaseAuth = firebaseApp.auth();
 export const firebaseDatabase = firebaseApp.database();

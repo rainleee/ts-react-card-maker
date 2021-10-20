@@ -1,3 +1,4 @@
+import { CardMetaData } from './../store/models';
 import { firebaseDatabase } from './firebase';
 
 /*
@@ -7,17 +8,6 @@ import { firebaseDatabase } from './firebase';
   */
 // TODO: doc작업 여기처럼 해놓고 params에 대해 써놓기
 
-type CardMetaData = {
-  id: string;
-  theme: string;
-  name?: string;
-  company?: string;
-  title?: string;
-  email?: string;
-  message?: string;
-  fileName?: string;
-  fileURL?: string;
-};
 interface Database {
   saveCard(userId: string, card: CardMetaData): void;
   removeCard(userId: string, card: CardMetaData): void;
