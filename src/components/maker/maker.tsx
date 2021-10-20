@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseUser } from '../../service/firebase';
 import { AppProps } from '../../store/common';
@@ -24,7 +24,9 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
   */
 
   const historyState = history?.location?.state;
-  const [cards, setCards] = useState<UserPersonalCards>({ id: { id: '' } });
+  const [cards, setCards] = useState<UserPersonalCards>({
+    id: { id: '', theme: 'light' },
+  });
   const [userId, setUserId] = useState<string>(
     historyState && (historyState as StateHistory).id
   );
@@ -76,7 +78,7 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
     });
 
     //firebase database delete
-    dbConnection.removeCard(userId, card);
+    dbConnection.removeCard(userId, card.id);
   };
 
   /**
