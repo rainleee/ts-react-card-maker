@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import styles from "./login.module.css";
-import Footer from "../footer/footer";
-import CardMakerHeader from "../header/card_maker_header";
-import { useHistory } from "react-router-dom";
+import { useEffect } from 'react';
+import styles from './login.module.css';
+import Footer from '../footer/footer';
+import CardMakerHeader from '../header/card_maker_header';
+import { useHistory } from 'react-router-dom';
+import { AppProps } from '../../store/common';
 
 const Login = ({ authService }: any) => {
   const history = useHistory();
@@ -25,7 +26,7 @@ const Login = ({ authService }: any) => {
 
   const goToMaker = (userId: string) => {
     history.push({
-      pathname: "/maker",
+      pathname: '/maker',
       state: { id: userId },
     });
   };

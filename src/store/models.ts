@@ -1,7 +1,7 @@
 // Card
 export type CardMetaData = {
   id: string;
-  theme: 'light' | 'dark' | 'colorful';
+  theme?: 'light' | 'dark' | 'colorful';
   name?: string;
   company?: string;
   title?: string;
@@ -13,9 +13,9 @@ export type CardMetaData = {
 
 // Card Metadata setCard updated type
 // maker.jsx createOrUpdateCard()
-export type UpdatedOrDeletedCard = {
-  [index: string]: CardMetaData | undefined;
-  id?: CardMetaData;
+export type UserPersonalCards = {
+  [index: CardMetaData['id']]: CardMetaData | undefined;
+  id: CardMetaData;
 };
 
 // useHistory

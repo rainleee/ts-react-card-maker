@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseUser } from '../../service/firebase';
 import { AppProps } from '../../store/common';
 import {
   CardMetaData,
   StateHistory,
-  UpdatedOrDeletedCard,
+  UserPersonalCards,
 } from '../../store/models';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
@@ -22,8 +22,9 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
   
   https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Optional_chaining
   */
+
   const historyState = history?.location?.state;
-  const [cards, setCards] = useState({});
+  const [cards, setCards] = useState<UserPersonalCards>({ id: { id: '' } });
   const [userId, setUserId] = useState<string>(
     historyState && (historyState as StateHistory).id
   );
@@ -32,9 +33,12 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
   useEffect(() => {
     if (!userId) return;
 
-    const stopSync = dbConnection.syncCards(userId, (cards: CardMetaData) => {
-      setCards(cards);
-    });
+    const stopSync = dbConnection.syncCards(
+      userId,
+      (cards: UserPersonalCards) => {
+        setCards(cards);
+      }
+    );
     return () => stopSync();
   }, [dbConnection, userId]);
 
@@ -51,8 +55,8 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
    * 신규카드가 만들어질 경우는 카드를 추가하고, 기존카드(id가 존재하는경우)일 경우 상태를 업데이트한다
    */
   const createOrUpdateCard = (card: CardMetaData) => {
-    setCards(cards => {
-      const updated: UpdatedOrDeletedCard = { ...cards };
+    setCards((cards: UserPersonalCards) => {
+      const updated: UserPersonalCards = { ...cards };
       updated[card.id] = card;
       return updated;
     });
@@ -65,8 +69,8 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
    * card infomation delete
    */
   const deleteCard = (card: CardMetaData) => {
-    setCards(cards => {
-      const updated: UpdatedOrDeletedCard = { ...cards };
+    setCards((cards: UserPersonalCards) => {
+      const updated: UserPersonalCards = { ...cards };
       delete updated[card.id];
       return updated;
     });
@@ -101,3 +105,26 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
 };
 
 export default Maker;
+
+/**
+ * TODO: 나중에 포폴 문서에 남길것.
+ *  타입스크립트를 쓰는 이유
+    const [cards, setCards] = useState<UserPersonalCards>({ id: { id: '' } });
+  const [userId, setUserId] = useState<string>(
+    historyState && (historyState as StateHistory).id
+  );
+  기존에는 useState를 제네릭없이 하거나 {}, null을 이용해 포괄적인 타입을 담아 any타입을 선언한것과 다름없었다.
+
+  위에 코드에서 UserPersonalCards는 CardMetaData를 묶어놓은 객체타입인데, 
+
+  onst stopSync = dbConnection.syncCards(
+      userId,
+      /// *** (cards: UserPersonalCards) => {
+        setCards(cards);
+      }
+    );
+
+    위 코드 중 ***인곳에 cards들을 선언해 놓고 아무거나 담을 수 있었다. 결국엔 넣을값과 선언한 타입이 일치해야 에러가 안나는데 
+    내가 card's'를 card로 착각해서 다른 CardMetaData 타입을 선언해 놨는데 아무문제 되지않았다. 그래서 초기화 할때도 객체타입을
+    정확히 명시해두면 코드를짤때 해당객체 규격안에서 해야하므로 참 중요하게 배운 사건이다. 
+*/
