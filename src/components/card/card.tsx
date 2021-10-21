@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './card.module.css';
 
+// TODO: 한곳에 몰아넣기
 const DEFAULT_IMAGE = '/images/default_logo.png';
 
-const Card = ({ card }) => {
+// const Card: React.FC = ({ card }) => {
+//TODO: arrow fn => function keyword change
+function Card({ card }: any) {
   //구조분해할당
   const {
     name, //
@@ -19,7 +22,7 @@ const Card = ({ card }) => {
 
   return (
     <li className={`${styles.card} ${getStyles(theme)}`}>
-      <img className={styles.avatar} src={url} alt="profile" />
+      <img className={styles.avatar} src={url} alt='profile' />
       <div className={styles.contents}>
         <h1 className={styles.name}>{name}</h1>
         <p className={styles.company}>{company}</p>
@@ -29,9 +32,9 @@ const Card = ({ card }) => {
       </div>
     </li>
   );
-};
+}
 
-function getStyles(theme) {
+function getStyles(theme: any) {
   switch (theme) {
     case 'dark':
       return styles.dark;
@@ -39,8 +42,8 @@ function getStyles(theme) {
       return styles.light;
     case 'colorful':
       return styles.colorful;
-    default:
-      throw new Error(`unkown theme: ${theme}`);
+    // default:
+    //   throw new Error(`unkown theme: ${theme}`);
   }
 }
 export default Card;

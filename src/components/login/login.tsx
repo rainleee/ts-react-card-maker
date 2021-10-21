@@ -3,7 +3,6 @@ import styles from './login.module.css';
 import Footer from '../footer/footer';
 import CardMakerHeader from '../header/card_maker_header';
 import { useHistory } from 'react-router-dom';
-import { AppProps } from '../../store/common';
 
 const Login = ({ authService }: any) => {
   const history = useHistory();

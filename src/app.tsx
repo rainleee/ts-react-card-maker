@@ -3,9 +3,9 @@ import styles from './app.module.css';
 import './index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Maker from './components/maker/maker';
-import { AppProps } from './store/common';
+import { InitProps } from './store/common';
 
-function App({ FileInput, authService, dbConnection }: AppProps) {
+function App({ FileInput, authService, dbConnection }: InitProps) {
   return (
     <div className={styles.app}>
       <BrowserRouter>

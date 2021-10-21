@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseUser } from '../../service/firebase';
-import { AppProps } from '../../store/common';
+import { InitProps } from '../../store/common';
 import {
   CardMetaData,
   StateHistory,
@@ -13,7 +13,7 @@ import CardMakerHeader from '../header/card_maker_header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
-const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
+function Maker({ FileInput, authService, dbConnection }: InitProps) {
   const history = useHistory<History>();
 
   /* 
@@ -24,9 +24,7 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
   */
 
   const historyState = history?.location?.state;
-  const [cards, setCards] = useState<UserPersonalCards>({
-    id: { id: '', theme: 'light' },
-  });
+  const [cards, setCards] = useState<UserPersonalCards>({});
   const [userId, setUserId] = useState<string>(
     historyState && (historyState as StateHistory).id
   );
@@ -104,7 +102,7 @@ const Maker = ({ FileInput, authService, dbConnection }: AppProps) => {
       <Footer />
     </section>
   );
-};
+}
 
 export default Maker;
 

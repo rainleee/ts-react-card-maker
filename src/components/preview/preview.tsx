@@ -1,8 +1,8 @@
-import React from 'react';
 import Card from '../card/card';
 import styles from './preview.module.css';
+import { UserPersonalCards } from '../../store/models';
 
-const Preview = ({ cards }) => {
+function Preview({ cards }: { cards: UserPersonalCards }) {
   return (
     <section className={styles.preview}>
       <h1 className={styles.title}>Card Preview</h1>
@@ -13,6 +13,6 @@ const Preview = ({ cards }) => {
       </ul>
     </section>
   );
-};
+}
 
 export default Preview;

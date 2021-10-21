@@ -3,6 +3,7 @@ import Button from '../button/button';
 import styles from './card_edit_form.module.css';
 import { CardMetaData } from '../../store/models';
 
+// TODO: any 가 있는거 죄다 바꾸기
 const CardEditForm = ({
   FileInput,
   card,
