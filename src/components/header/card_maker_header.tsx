@@ -1,7 +1,11 @@
-import React from "react";
-import styles from "./card_maker_header.module.css";
+import styles from './card_maker_header.module.css';
 
-const CardMakerHeader = ({ onLogout }) => {
+// CardMakerHeader
+type CardMakerHeaderPorps = {
+  onLogout: () => void;
+};
+
+function CardMakerHeader({ onLogout }: CardMakerHeaderPorps) {
   return (
     <header className={styles.header}>
       {onLogout && (
@@ -11,10 +15,10 @@ const CardMakerHeader = ({ onLogout }) => {
           </button>
         </div>
       )}
-      <img className={styles.logo} src="/images/logo.png" alt="logo" />
+      <img className={styles.logo} src='/images/logo.png' alt='logo' />
       <h1 className={styles.title}>Business Card Maker</h1>
     </header>
   );
-};
+}
 
 export default CardMakerHeader;
