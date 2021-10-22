@@ -1,33 +1,37 @@
 import React, { useRef } from 'react';
 import Button from '../button/button';
 import styles from './card_edit_form.module.css';
-import { CardMetaData } from '../../store/models';
+import { CardMetaData, ImageFileInfo } from '../../store/models';
+import { EditorProps } from '../editor/editor';
 
-// TODO: any 가 있는거 죄다 바꾸기
+type CardEditFormProps = Pick<
+  EditorProps,
+  'FileInput' | 'updateCard' | 'deleteCard'
+> & {
+  card: CardMetaData;
+};
+
 const CardEditForm = ({
   FileInput,
   card,
   updateCard,
   deleteCard,
-}: FormProps) => {
+}: CardEditFormProps) => {
+  // input
   const nameRef = useRef<HTMLInputElement>(null);
   const companyRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  // theme
   const themeRef = useRef<HTMLSelectElement>(null);
 
-  const {
-    name,
-    company,
-    title,
-    email,
-    message,
-    theme,
-    fileName,
-  }: CardMetaData = card;
+  // textarea
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
-  const onFileChange = (file: ImageFileInput) => {
+  const { name, company, title, email, message, theme, fileName } = card;
+
+  const onFileChange = (file: ImageFileInfo) => {
     updateCard({
       ...card,
       fileName: file.name,
@@ -36,7 +40,7 @@ const CardEditForm = ({
   };
 
   //delete submit event
-  const onSubmit = (event: React.ChangeEvent<HTMLElement>) => {
+  const onSubmit = (event: React.SyntheticEvent<HTMLElement>) => {
     event.preventDefault();
     deleteCard(card);
   };
@@ -121,22 +125,6 @@ const CardEditForm = ({
       <Button name='Delete' onClick={onSubmit} />
     </form>
   );
-};
-
-// TODO: react props after redux change
-interface FormProps {
-  FileInput: any;
-  card: any;
-  updateCard: any;
-  deleteCard: any;
-}
-
-/**
- * image data type
- */
-type ImageFileInput = {
-  name: string;
-  url: string;
 };
 
 export default CardEditForm;

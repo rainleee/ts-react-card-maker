@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { CardMetaData, CardThemeType, ImageUpload } from '../../store/models';
+import { CardMetaData, CardThemeType, ImageFileInfo } from '../../store/models';
 import Button from '../button/button';
 import { EditorProps } from '../editor/editor';
 import styles from './card_add_form.module.css';
@@ -8,7 +8,7 @@ import styles from './card_add_form.module.css';
 type CardAddFormProps = Pick<EditorProps, 'FileInput' | 'addCard'>;
 
 function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
-  // inpuelement
+  // input
   const nameRef = useRef<HTMLInputElement>(null);
   const companyRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
@@ -26,7 +26,7 @@ function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
   const [file, setFile] =
     useState<Pick<CardMetaData, 'fileName' | 'fileURL'>>();
 
-  const onFileChange = (file: ImageUpload) => {
+  const onFileChange = (file: ImageFileInfo) => {
     setFile({
       fileName: file.name, //
       fileURL: file.url,
