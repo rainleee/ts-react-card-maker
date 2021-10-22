@@ -2,7 +2,8 @@
 export type CardMetaData = {
   [index: string]: string | undefined;
   id: string;
-  theme?: 'light' | 'dark' | 'colorful';
+  theme: CardThemeType;
+  // theme?: CardThemeType;
   name?: string;
   company?: string;
   title?: string;
@@ -11,6 +12,11 @@ export type CardMetaData = {
   fileName?: string;
   fileURL?: string;
 };
+
+export type CardThemeType = 'light' | 'dark' | 'colorful';
+
+// cloudinary image upload
+export type ImageUpload = { name: string; url: string };
 
 // Card Metadata setCard updated type
 // TODO: 나중에 maker.tsx쪽에 옮기기. 카드메타데이터들의 묶음이라 여기엔 안어울리는거 같음

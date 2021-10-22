@@ -3,9 +3,8 @@ import CardEditForm from '../card_edit_form/card_edit_form';
 import styles from './editor.module.css';
 import { CardMetaData, UserPersonalCards } from '../../store/models';
 
-type EditorProps = {
-  // TODO: FileInput type
-  FileInput: any;
+export type EditorProps = {
+  FileInput: (props: any) => JSX.Element;
   cards: UserPersonalCards;
   addCard: (card: CardMetaData) => void;
   updateCard: (card: CardMetaData) => void;

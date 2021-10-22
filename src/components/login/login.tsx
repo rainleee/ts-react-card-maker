@@ -32,7 +32,7 @@ const Login = ({ authService }: any) => {
 
   return (
     <section className={styles.login}>
-      <CardMakerHeader onLogout />
+      <CardMakerHeader />
       <section>
         <h1 className={styles.title}>Login</h1>
 
