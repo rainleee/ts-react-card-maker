@@ -1,13 +1,16 @@
-# firebase와 React를 이용한 명함만들기 프로젝트입니다. (react로 사용하여 만든프로젝트를 유지하고, TypeScript를 포함한 프로젝트로!!!! )
+# firebase와 React를 이용한 명함만들기 프로젝트입니다.
 
 ## 사용 Skills
 
 - front-end
 
+  - typeScript
   - javaScript
-  - React 라이브러리
+  - React lib
   - HTML & CSS
-  - axios 비동기통신 라이브러리
+  - axios 비동기통신 lib
+  - redux
+  - redux-saga
 
 - back-end
 
