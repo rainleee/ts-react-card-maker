@@ -15,9 +15,7 @@ interface Database {
 
 class DbConnection implements Database {
   //firebase data save
-  // TODO:  userID Patitail로 가져오는거 고민해보기
   saveCard(userId: string, card: CardMetaData) {
-    // TODO: card data type정의한것 합쳐야됨. 새로운파일 만들어서 관리할 것.
     const {
       id,
       theme,

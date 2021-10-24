@@ -3,13 +3,14 @@ import styles from './login.module.css';
 import Footer from '../footer/footer';
 import CardMakerHeader from '../header/card_maker_header';
 import { useHistory } from 'react-router-dom';
+import { FirebaseUser } from '../../service/firebase';
 
 const Login = ({ authService }: any) => {
   const history = useHistory();
 
   useEffect(() => {
     authService //
-      .onAuthChange((user: any) => {
+      .onAuthChange((user: FirebaseUser) => {
         //go to maker
         user && goToMaker(user.uid);
       });

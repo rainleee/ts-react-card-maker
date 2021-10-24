@@ -2,8 +2,7 @@ import styles from './button.module.css';
 
 type ButtonProps = {
   name: string;
-  // TODO: event
-  onClick: (event: any) => void;
+  onClick: (event: React.SyntheticEvent<HTMLElement>) => void;
 };
 
 const Button = ({ name, onClick }: ButtonProps) => (

@@ -1,12 +1,11 @@
 import React from 'react';
+import { CardMetaData } from '../../store/models';
 import styles from './card.module.css';
 
 // TODO: 한곳에 몰아넣기
 const DEFAULT_IMAGE = '/images/default_logo.png';
 
-// const Card: React.FC = ({ card }) => {
-//TODO: arrow fn => function keyword change
-function Card({ card }: any) {
+function Card({ card }: { card: CardMetaData }) {
   //구조분해할당
   const {
     name, //
@@ -33,8 +32,8 @@ function Card({ card }: any) {
     </li>
   );
 }
-
-function getStyles(theme: any) {
+// TODO: function 자리를 어디다 둘지 생각하기
+function getStyles(theme: string) {
   switch (theme) {
     case 'dark':
       return styles.dark;
@@ -42,8 +41,8 @@ function getStyles(theme: any) {
       return styles.light;
     case 'colorful':
       return styles.colorful;
-    // default:
-    //   throw new Error(`unkown theme: ${theme}`);
+    default:
+      throw new Error(`unkown theme: ${theme}`);
   }
 }
 export default Card;

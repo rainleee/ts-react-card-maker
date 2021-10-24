@@ -13,7 +13,7 @@ import {
   */
 
 // TODO: 이 타입들 나중에 한곳에 모아두고 import하기
-type CallbackFunction = (user: FirebaseUser | null) => void;
+type AuthChangeUserFn = (user: FirebaseUser) => void;
 
 // login 시 type
 type LoginProvider = typeof googleProvider | typeof githubProvider;
@@ -36,8 +36,7 @@ class AuthService implements FirebaseAuthService {
   }
 
   //auth state 변경 시 user정보 update
-  // TODO: Callback 함수를 인자로 넣고 그것을 type 지정하는것이 완료되지 않음.
-  onAuthChange(onUserChanged: CallbackFunction) {
+  onAuthChange(onUserChanged: AuthChangeUserFn) {
     firebaseAuth.onAuthStateChanged(user => {
       onUserChanged(user);
     });
