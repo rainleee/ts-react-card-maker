@@ -4,7 +4,16 @@ import { AxiosInstance } from 'axios';
 autor: rainlee
 description: cloudinary에 image upload를 위한 class
 */
-// TODO: 다시 타입 정의하기
+
+type FileInfo = {
+  name: string;
+  size: number;
+  type: string;
+  webkitRelativePath: string;
+  lastModified?: any;
+  lastModifiedDate?: any;
+} & Blob;
+
 class ImageUploader {
   private imageUploader: AxiosInstance;
 
@@ -12,7 +21,7 @@ class ImageUploader {
     this.imageUploader = httpClient;
   }
 
-  async upload(file: any) {
+  async upload(file: FileInfo) {
     const formData = new FormData();
     formData.append('file', file);
     formData.append(
@@ -30,5 +39,3 @@ class ImageUploader {
 }
 
 export default ImageUploader;
-
-// TODO: 업로딩 되는동안에는 로딩스피너 만들기

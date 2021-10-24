@@ -28,7 +28,7 @@ function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
 
   const onFileChange = (file: ImageFileInfo) => {
     setFile({
-      fileName: file.name, //
+      fileName: file.name,
       fileURL: file.url,
     });
   };

@@ -1,18 +1,31 @@
 import React, { useRef, useState } from 'react';
+import ImageUploader from '../../service/image_uploader';
+import { ImageFileInfo } from '../../store/models';
 import styles from './image_file_input.module.css';
 
-// TODO: props빼고 타입정의 다시하기
-const ImageFileInput = ({ imageUploader, name, onFileChange }: any) => {
+type ImageFileProps = {
+  imageUploader: ImageUploader;
+  name: string;
+  onFileChange: (file: ImageFileInfo) => void;
+};
+
+const ImageFileInput = ({
+  imageUploader,
+  name,
+  onFileChange,
+}: ImageFileProps) => {
   const [loading, setLoading] = useState(false);
   const inputFileRef = useRef<HTMLInputElement>(null);
 
-  const onButtonClick = (event: any) => {
+  const onButtonClick = (event: React.SyntheticEvent<HTMLElement>) => {
     event.preventDefault();
     inputFileRef.current?.click();
   };
 
   // TODO: event parameter any type 수정할것
   const onChange = async (event: any): Promise<void> => {
+    console.log(event.target.files[0]);
+
     setLoading(true);
     const uploaded = await imageUploader.upload(event.target.files[0]);
 
