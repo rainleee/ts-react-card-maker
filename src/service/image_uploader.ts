@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, AxiosResponse } from 'axios';
 
 /* 
 autor: rainlee
@@ -29,7 +29,7 @@ class ImageUploader {
       process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET as string //TODO: casting 재정의
     );
 
-    const response = await this.imageUploader.post(
+    const response: AxiosResponse<any, any> = await this.imageUploader.post(
       `${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`,
       formData
     );
