@@ -6,6 +6,8 @@ import ImageFileInput from './components/image_file_input/image_file_input';
 import AuthService from './service/auth_service';
 import DbConnection from './service/db_connection';
 import ImageUploader from './service/image_uploader';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const authService = new AuthService();
 
@@ -25,11 +27,13 @@ const FileInput = (props: any): JSX.Element => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      FileInput={FileInput}
-      authService={authService}
-      dbConnection={dbConnection}
-    />
+    <Provider store={store}>
+      <App
+        FileInput={FileInput}
+        authService={authService}
+        dbConnection={dbConnection}
+      />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

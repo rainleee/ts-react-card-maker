@@ -24,8 +24,6 @@ const ImageFileInput = ({
 
   // TODO: event parameter any type 수정할것
   const onChange = async (event: any): Promise<void> => {
-    console.log(event.target.files[0]);
-
     setLoading(true);
     const uploaded = await imageUploader.upload(event.target.files[0]);
 

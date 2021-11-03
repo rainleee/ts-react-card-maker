@@ -108,6 +108,7 @@ function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
         <FileInput name={file?.fileName} onFileChange={onFileChange} />
       </div>
       <Button name='Add' onClick={onSubmit} />
+      {/* <Button /> */}
     </form>
   );
 }
