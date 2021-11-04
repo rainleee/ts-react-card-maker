@@ -67,24 +67,6 @@ function Maker({ FileInput, authService, dbConnection }: InitProps) {
   };
 
   /**
-   * card infomation delete
-   */
-  // const deleteCard = (card: CardMetaData) => {
-  //   //TODO: set card를 유지해야되는게 맞는거임??
-  //   setCards((cards: UserPersonalCards) => {
-  //     const updated: UserPersonalCards = { ...cards };
-  //     delete updated[card.id];
-  //     return updated;
-  //   });
-
-  //   // 추가하는것이라 delete해도 action.payload에는 변경이 기존 state가 남아있음.
-  //   // dispatch(cardSlice.actions.deleteCard(card));
-
-  //   //firebase database delete
-  //   dbConnection.removeCard(userId, card.id);
-  // };
-
-  /**
    * login user logout
    */
   const onLogout = () => {

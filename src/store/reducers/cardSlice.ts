@@ -15,6 +15,10 @@ export const cardSlice = createSlice({
         key => (state[key] = action.payload[key])
       );
     },
+
+    addCard(state, action) {
+      state[action.payload.id] = action.payload;
+    },
     createOrUpdateCard(state, action) {},
 
     // TODO: 나중엔 지우지말고 임시보관함에 보관했다가 며칠이내에 복구가능하게 만들기

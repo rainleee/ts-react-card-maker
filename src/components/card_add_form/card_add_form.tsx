@@ -1,13 +1,24 @@
 import React, { useRef, useState } from 'react';
-import { CardMetaData, CardThemeType, ImageFileInfo } from '../../store/models';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import {
+  CardMetaData,
+  CardThemeType,
+  ImageFileInfo,
+  StateHistory,
+} from '../../store/models';
+import { cardSlice } from '../../store/reducers/cardSlice';
 import Button from '../button/button';
 import { EditorProps } from '../editor/editor';
 import styles from './card_add_form.module.css';
 
-// TODO: Type extends 하는방법
-type CardAddFormProps = Pick<EditorProps, 'FileInput' | 'addCard'>;
+type CardAddFormProps = Pick<EditorProps, 'FileInput' | 'dbConnection'>;
 
-function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
+function CardAddForm({ FileInput, dbConnection }: CardAddFormProps) {
+  const dispatch = useDispatch();
+  const historyState = useHistory<History>()?.location?.state;
+  const userId = historyState && (historyState as StateHistory).id;
+
   // input
   const nameRef = useRef<HTMLInputElement>(null);
   const companyRef = useRef<HTMLInputElement>(null);
@@ -37,6 +48,7 @@ function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
   // const onSubmit = (event: any) => {
   const onSubmit = (event: React.SyntheticEvent<HTMLElement>) => {
     event.preventDefault();
+
     const card: CardMetaData = {
       id: Date.now().toString(), //uuid
       name: nameRef?.current?.value || '',
@@ -50,11 +62,16 @@ function CardAddForm({ FileInput, addCard }: CardAddFormProps) {
     };
 
     (formRef.current as HTMLFormElement).reset();
+
     setFile({
       fileName: undefined, //
       fileURL: undefined,
     });
-    addCard(card);
+
+    dispatch(cardSlice.actions.addCard(card));
+
+    //firebase database new data set
+    dbConnection.saveCard(userId, card);
   };
 
   return (

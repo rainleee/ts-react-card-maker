@@ -6,7 +6,6 @@ import { EditorProps } from '../editor/editor';
 import { useDispatch } from 'react-redux';
 import { cardSlice } from '../../store/reducers/cardSlice';
 import { useHistory } from 'react-router-dom';
-import DbConnection from '../../service/db_connection';
 
 type CardEditFormProps = Pick<
   EditorProps,
@@ -49,6 +48,9 @@ function CardEditForm({
 
   //delete submit event
   // TODO: useCallback 사용해서 감싸주기
+  /**
+   * card infomation delete
+   */
   const onSubmitDelete = (event: React.SyntheticEvent<HTMLElement>) => {
     event.preventDefault();
     dispatch(cardSlice.actions.deleteCard(card));

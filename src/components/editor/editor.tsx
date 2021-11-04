@@ -15,7 +15,7 @@ export type EditorProps = {
   deleteCard: (card: CardMetaData) => void;
 };
 
-function Editor({ FileInput, addCard, updateCard, dbConnection }: any) {
+function Editor({ FileInput, updateCard, dbConnection }: any) {
   //redux-state
   const cards = useSelector((state: RootState) => state.cards);
 
@@ -31,7 +31,7 @@ function Editor({ FileInput, addCard, updateCard, dbConnection }: any) {
           FileInput={FileInput}
         />
       ))}
-      <CardAddForm addCard={addCard} FileInput={FileInput} />
+      <CardAddForm FileInput={FileInput} dbConnection={dbConnection} />
     </section>
   );
 }
