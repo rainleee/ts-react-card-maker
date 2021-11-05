@@ -1,7 +1,6 @@
 import CardAddForm from '../card_add_form/card_add_form';
 import CardEditForm from '../card_edit_form/card_edit_form';
 import styles from './editor.module.css';
-import { CardMetaData, UserPersonalCards } from '../../store/models';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import DbConnection from '../../service/db_connection';
@@ -9,13 +8,9 @@ import DbConnection from '../../service/db_connection';
 export type EditorProps = {
   FileInput: (props: any) => JSX.Element;
   dbConnection: DbConnection;
-  cards: UserPersonalCards;
-  addCard: (card: CardMetaData) => void;
-  updateCard: (card: CardMetaData) => void;
-  deleteCard: (card: CardMetaData) => void;
 };
 
-function Editor({ FileInput, updateCard, dbConnection }: any) {
+function Editor({ FileInput, dbConnection }: EditorProps) {
   //redux-state
   const cards = useSelector((state: RootState) => state.cards);
 
@@ -26,7 +21,6 @@ function Editor({ FileInput, updateCard, dbConnection }: any) {
         <CardEditForm
           key={key}
           card={cards[key]}
-          updateCard={updateCard}
           dbConnection={dbConnection}
           FileInput={FileInput}
         />

@@ -16,10 +16,14 @@ export const cardSlice = createSlice({
       );
     },
 
-    addCard(state, action) {
+    /**
+     * card infomation create or update
+     *
+     * 신규카드가 만들어질 경우는 카드를 추가하고, 기존카드(id가 존재하는경우)일 경우 상태를 업데이트한다
+     */
+    addOrUpdateCard(state, action) {
       state[action.payload.id] = action.payload;
     },
-    createOrUpdateCard(state, action) {},
 
     // TODO: 나중엔 지우지말고 임시보관함에 보관했다가 며칠이내에 복구가능하게 만들기
     deleteCard(state, action) {

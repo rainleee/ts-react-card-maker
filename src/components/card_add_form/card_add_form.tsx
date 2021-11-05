@@ -45,7 +45,6 @@ function CardAddForm({ FileInput, dbConnection }: CardAddFormProps) {
   };
 
   //add submit event
-  // const onSubmit = (event: any) => {
   const onSubmit = (event: React.SyntheticEvent<HTMLElement>) => {
     event.preventDefault();
 
@@ -68,7 +67,8 @@ function CardAddForm({ FileInput, dbConnection }: CardAddFormProps) {
       fileURL: undefined,
     });
 
-    dispatch(cardSlice.actions.addCard(card));
+    // state set
+    dispatch(cardSlice.actions.addOrUpdateCard(card));
 
     //firebase database new data set
     dbConnection.saveCard(userId, card);

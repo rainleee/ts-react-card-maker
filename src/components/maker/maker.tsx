@@ -2,11 +2,7 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseUser } from '../../service/firebase';
 import { InitProps } from '../../store/common';
-import {
-  CardMetaData,
-  StateHistory,
-  UserPersonalCards,
-} from '../../store/models';
+import { StateHistory } from '../../store/models';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
 import CardMakerHeader from '../header/card_maker_header';
@@ -26,7 +22,6 @@ function Maker({ FileInput, authService, dbConnection }: InitProps) {
   */
 
   const historyState = history?.location?.state;
-  const [cards, setCards] = useState<UserPersonalCards>({});
   const [userId, setUserId] = useState<string>(
     historyState && (historyState as StateHistory).id
   );
@@ -36,7 +31,6 @@ function Maker({ FileInput, authService, dbConnection }: InitProps) {
     if (!userId) return;
 
     const stopSync = dbConnection.syncCards(userId, cards => {
-      setCards(cards);
       dispatch(cardSlice.actions.setCards(cards));
     });
     return () => stopSync();
@@ -51,22 +45,6 @@ function Maker({ FileInput, authService, dbConnection }: InitProps) {
   }, [authService, history, userId]);
 
   /**
-   * card infomation create or update
-   *
-   * 신규카드가 만들어질 경우는 카드를 추가하고, 기존카드(id가 존재하는경우)일 경우 상태를 업데이트한다
-   */
-  const createOrUpdateCard = (card: CardMetaData) => {
-    setCards((cards: UserPersonalCards) => {
-      const updated: UserPersonalCards = { ...cards };
-      updated[card.id] = card;
-      return updated;
-    });
-
-    //firebase database new data set
-    dbConnection.saveCard(userId, card);
-  };
-
-  /**
    * login user logout
    */
   const onLogout = () => {
@@ -77,12 +55,7 @@ function Maker({ FileInput, authService, dbConnection }: InitProps) {
     <section className={styles.maker}>
       <CardMakerHeader onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor
-          cards={cards}
-          dbConnection={dbConnection}
-          FileInput={FileInput}
-          updateCard={createOrUpdateCard}
-        />
+        <Editor dbConnection={dbConnection} FileInput={FileInput} />
         <Preview />
       </div>
       <Footer />

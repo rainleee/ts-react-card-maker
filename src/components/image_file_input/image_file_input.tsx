@@ -23,6 +23,7 @@ const ImageFileInput = ({
   };
 
   // TODO: event parameter any type 수정할것
+  // TODO: props로 넘어오는 값을 redux로 바꾸기?
   const onChange = async (event: any): Promise<void> => {
     setLoading(true);
     const uploaded = await imageUploader.upload(event.target.files[0]);

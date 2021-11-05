@@ -7,16 +7,12 @@ import { useDispatch } from 'react-redux';
 import { cardSlice } from '../../store/reducers/cardSlice';
 import { useHistory } from 'react-router-dom';
 
-type CardEditFormProps = Pick<
-  EditorProps,
-  'FileInput' | 'updateCard' | 'dbConnection'
-> & {
+type CardEditFormProps = Pick<EditorProps, 'FileInput' | 'dbConnection'> & {
   card: CardMetaData;
 };
 
 function CardEditForm({
-  FileInput,
-  updateCard,
+  FileInput, //
   dbConnection,
   card,
 }: CardEditFormProps) {
@@ -39,6 +35,7 @@ function CardEditForm({
   const { name, company, title, email, message, theme, fileName } = card;
 
   const onFileChange = (file: ImageFileInfo) => {
+    // TODO: file 바꾸기
     updateCard({
       ...card,
       fileName: file.name,
@@ -75,6 +72,30 @@ function CardEditForm({
       [event.currentTarget.name]: event.currentTarget.value,
     });
   };
+
+  const updateCard = (card: CardMetaData) => {
+    dispatch(cardSlice.actions.addOrUpdateCard(card));
+
+    //firebase database new data set
+    dbConnection.saveCard(userId, card);
+  };
+
+  //  TODO: 11.05 15:23분 기존 코드
+  // const onChange = (
+  //   event: React.ChangeEvent<
+  //     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  //   >
+  // ) => {
+  //   if (event.currentTarget === null) {
+  //     return;
+  //   }
+  //   event.preventDefault();
+
+  //   updateCard({
+  //     ...card,
+  //     [event.currentTarget.name]: event.currentTarget.value,
+  //   });
+  // };
 
   return (
     <form className={styles.form}>
