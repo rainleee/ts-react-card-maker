@@ -53,24 +53,126 @@
 
 # Code Refactoring
 
+## 상태관리 lib Redux-Toolkit 도입
+
 ![redux](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJBsnR%2FbtrkvJeN6JL%2F0AhOXGQQSulW9ECnvl6YQK%2Fimg.png)
 
 [Redux 사진 출처](https://www.slideshare.net/binhqdgmail/006-react-redux-framework)
 
-- Redux-Toolkit (state management library)
+- Redux가 필요한 이유
 
   - props 문법이 번거롭고, 하위 Component로 props를 보내야할게 많을때
   - state의 변경관리를 쉽게하기 위해
   - 찢어져 있는 props를 한 파일에 보관하여 관리가 용이하고 수정사항이 있을경우 한곳에서 수정하면 되니 유지보수성이 좋아진다.
 
-  ```
-  // redux 해당 코드를 붙여넣기
-  ```
-
 ### Redux-saga, Redux-thunk, MboX 등 여러가지가 있지만 그중 Redux-Toolkit(이하 RTK)을 선택한 이유는??
 
 - 리덕스에서 자주쓰는 기능들을 모두다 모아둔 라이브러리. thunk, saga, immer가 내장된 리덕스팀에서 공식적으로 만든 라이브러리.
 - 규격화된 패턴과 변수명칭(?)이 존재하여 배우는 입장에서나 유지보수적인 측면에서 이해가 쉬워 선택하였다. MobX의 경우는 간단한 문법과 쉬운 사용법으로 쓰려고했으나 가독성을 위해 '@' 문구를 사용하는 decorator syntax를 지원하지만 글을 작성하고 있는 현재(21/11/11) 공식적으로 지원하고 있지 않기에 RTK처럼 패턴화가 되어있는 라이브러리를 선택했다.
+  <br>
+  <br>
+
+## 실제 Refactoring 된 code
+
+- 아래 코드는 해당 프로젝트 maker.tsx file return type 코드들이다. 하위 Component에 props를 넘기고, 해당 props를 다시 maker.tsx 상위로 불러와 function을 실행하여 작업을 수행하는 형식으로 이루어져있다.
+
+```javascript
+// before redux maker.jsx
+// addCard, updateCard, deleteCard props func
+const createOrUpdateCard = card => {
+  setCards(cards => {
+    const updated = { ...cards };
+    updated[card.id] = card;
+    return updated;
+  });
+};
+
+const deleteCard = card => {
+  setCards(cards => {
+    const updated = { ...cards };
+    delete updated[card.id];
+    return updated;
+  });
+};
+
+// before redux maker.jsx return
+return (
+  <section className={styles.maker}>
+    <CardMakerHeader onLogout={onLogout} />
+    <div className={styles.container}>
+      {/*props 전달*/}
+      <Editor
+        cards={cards}
+        addCard={createOrUpdateCard}
+        updateCard={createOrUpdateCard}
+        deleteCard={deleteCard}
+        FileInput={FileInput}
+      />
+      {/*props 전달*/}
+      <Preview cards={cards} />
+    </div>
+    <Footer />
+  </section>
+);
+```
+
+- 위 function은 redux 도입전 props로 넘긴 함수들을 실행하는 함수들이다. 유지보수에 용이하게 function을 한곳에 만들어 props를 넘긴 후 실제로 사용하는 JSX Element에서 event를 줘서 maker.jsx에서 실행되서 만들어 놓았다.<br>
+  하지만 후에 만든사람이 아니거나, 오랜시간이 지난후에 코드를 수정하거나, 버그를 발견해 디버깅할일이 있다면 maker.jsx로 해당함수를 찾기위해 아래 JSX부터 코드를 이해하며 와야할 것이다. 아래는 redux 도입 후 코드들이다.
+
+```javascript
+//@reduxjs/toolkit cardSlice.ts createSlice()
+export const cardSlice = createSlice({
+  name: 'card',
+  initialState,
+  reducers: {
+    //sync reducers
+    setCards(state, action) {
+      Object.keys(action.payload).map(
+        key => (state[key] = action.payload[key])
+      );
+    },
+
+    addOrUpdateCard(state, action) {
+      state[action.payload.id] = action.payload;
+    },
+
+    deleteCard(state, action) {
+      delete state[action.payload.id];
+    },
+  },
+});
+
+// after redux maker.tsx return
+return (
+  <section className={styles.maker}>
+    <CardMakerHeader onLogout={onLogout} />
+    <div className={styles.container}>
+      <Editor dbConnection={dbConnection} FileInput={FileInput} />
+      <Preview />
+    </div>
+    <Footer />
+  </section>
+);
+```
+
+- event를 실행하는 화면에서 dispatch()로 RTK의 slice()를 이용해 한 파일에 모아두거 유지보수성을 높였고, 불변성때문에 ...을 사용해 객체리터럴을 반복적으로 사용해 코드가 길어졌는데, RTK에 내장된 immer를 사용해 코드량을 줄여 반복적인 코드 제거 및 가독성을 높였다. 같은 파일에서 얼마나 props를 넘기는양이 달라졌는지 아래 JSX Element를 통해 보도록하자. Editor에 넘기는 props가 다섯줄에서 한 줄이 된 것을 볼 수 있다.
+
+```javascript
+// before redux maker.jsx return
+  (<Editor
+    cards={cards}
+    addCard={createOrUpdateCard}
+    updateCard={createOrUpdateCard}
+    deleteCard={deleteCard}
+    FileInput={FileInput}
+  />
+  <Preview cards={cards} />)
+
+// after redux maker.tsx return
+  <Editor dbConnection={dbConnection} FileInput={FileInput} />
+  <Preview />
+);
+```
 
 ## 2.필요한 스킬과 자료
 
