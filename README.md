@@ -1,28 +1,39 @@
-# firebase와 React를 이용한 명함만들기 프로젝트입니다.
+# firebase와 React를 이용한 명함만들기 프로젝트입니다
 
-## 사용 Skills
+## Environment (설치언어 버전 및 사용스킬)
 
 - front-end
 
-  - typeScript
-  - javaScript
-  - React lib
-  - HTML & CSS
-  - axios 비동기통신 lib
-  - redux
-  - redux-saga
+  - TypeScript v 4.4
+  - JavaScript ES6
+  - HTML5 & CSS3
+  - React v 17.0
+  - Axios v 0.23
+  - Redux-toolkit v 1.6
 
 - back-end
 
-  - node js
+  - node js v 16.10
+  - NPM
   - yarn
-  - firebase realtime database
-  - firebase auth
-  - cloudnary storage - image cloud storage
+  - Firebase Realtime Database
+  - Firebase Auth
+  - Cloudnary Storage - image cloud storage
+
+## Prerequisite (전제조건)
+
+- Firebase Auth API key
+- Firebase realtime database API key
+- cloudnary API key
+- 노드환경파일 .env에 API key를 보관하였다. 각자의 환경에 맞춰서 API key를 공개하지말고 구현할것.
 
 ## 1.내가 만든 프로젝트 분석(기능,코드,이미지)
 
-## Project: Business Card-maker (명함만들기)
+## Project Name: Business Card Maker (명함만들기)
+
+> 작성한 내용을 토대로 명함을 만들어주는 웹 프로젝트이다. 로그인 후 사용자의 연동된 정보를 통해 계정마다 저장된 명함을 볼 수 있다. Maker section을 통해 명함의 정보를 추가하거나 수정할 수 있으며, 이미지 등록이 가능하다. 또한, Preview section을 통해 완성된 명함을 볼 수 있다.
+
+### workflow
 
 1. firebase auth를 통한 google이나 github 계정을 통해 로그인한다.
 
@@ -34,19 +45,12 @@
 
 4. 저장된 정보는 delete 버튼을 눌러 삭제할 수 있으며, maker 최하단에는 새로 생성할 카드정보를 입력할 수 있다.
 
-5. 최상단 오른쪽에 logout 버튼을 눌러 계정을 변경할 수 있다.(로컬스토리지,쿠키 같은거 사용 X..)
+5. 최상단 오른쪽에 logout 버튼을 눌러 계정을 변경할 수 있다.
 
-좀 더 나은 프로그램을 만들기위해 변경할 수 있는점
+## 2.필요한 스킬과 자료
 
-- 로컬스토리지,쿠키,세션을 이용한 정보저장.
-- 백그라운드 색상 database에 저장 후 불러와 다양한 색상으로 표현?(3가지의 색만 고를게 아니라, 사용자가 직접 rgb값을 정하게끔 만들기)
-- useMemo, useCallback을 활용하기
-- state 관리 라이브러리 리덕스 사용
-- TypeScript 사용하기
-- function 문서정리
-- ESLint 사용하기
-- redux를 이용해서 상태관리하기
+- 각 구현한 곳에서 사용한 기술을 정리해서 만듦(Auth, realtimedatabase, image upload, react JSX Ele...etc)
 
-## 2.내가 취업하고자 하는 기업에서 원하는 역량 분석
+- redux, 타입스크립트 대입전 코드와 대입 후 코드를 비교분석하고 왜 넣었는지에 대해 설명할것.
 
-## 3.필요한 스킬과 자료
+## 3.내가 취업하고자 하는 기업에서 원하는 역량 분석
