@@ -1,14 +1,26 @@
-# Project Name: Business Card Maker (명함만들기)
+# Project Name: Business Card Maker
 
 - 작성한 내용을 토대로 명함을 만들어주는 웹 프로젝트이다. 로그인 후 사용자의 연동된 정보를 통해 계정마다 저장된 명함을 볼 수 있다. Maker section을 통해 명함의 정보를 추가하거나 수정할 수 있으며, 이미지 등록이 가능하다. 또한, Preview section을 통해 완성된 명함을 볼 수 있다.
 
 ## index
 
-[Project Name](#project-name)
-[작동설명](#프로젝트-작동설명)
-[Prerequisite (전제조건)](#prerequisite-[전제조건])
+- [Project Name](#project-name:-business-card-maker)
 
-### 프로젝트 작동설명
+1. [프로젝트 설명](#1장.-프로젝트설명)
+   - [Environment](#설치언어-버전-및-사용스킬)
+   - [Prerequisite](#1-2.-prerequisite-전제조건)
+2. [Code Refactoring](#2장.-code-refactoring)
+   1. [TypeScript](#1.-javascript-=>-typescript로-refactoring)
+      - [Typescript로 Refactoring한 이유는?](#typescript로-Refactoring한-이유는?)
+      - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점)
+      - [Refactoring Code](#실제-refactoring-된-typescript-code)
+      - [interface와 type의 차이점](#어떨때-interface와-type을-쓰는-것일까?)
+   2. [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
+      - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
+      - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
+      - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
+
+## 1장. 프로젝트설명
 
 1. firebase auth를 통한 google이나 github 계정을 통해 로그인한다.
 
@@ -22,7 +34,9 @@
 
 5. 최상단 오른쪽에 logout 버튼을 눌러 계정을 변경할 수 있다.
 
-## Environment (설치언어 버전 및 사용스킬)
+## Environment
+
+#### 설치언어 버전 및 사용스킬
 
 - front-end
 
@@ -45,16 +59,18 @@
 
   - Redux-toolkit v 1.6
 
-## Prerequisite [전제조건]
+## Prerequisite 전제조건
 
 - Firebase Auth API key
 - Firebase realtime database API key
 - cloudnary API key
 - 노드환경파일 .env에 API key를 보관하였다. 각자의 환경에 맞춰서 API key를 공개하지말고 구현할것.
 
-# Code Refactoring
+# 2장. Code Refactoring
 
-## 1. Javascript => TypeScript로 Refactoring
+## 2-1장. Javascript => TypeScript로 Refactoring
+
+### Typescript로 Refactoring한 이유는?
 
 - 아래표를 보면서 두 언어의 차이점을 보자. 이러한 차이점과 객체지향언어의 장점으로 TypeScript로 리팩토링을 진행했다.
 
@@ -65,7 +81,7 @@
 | 장점 | 타입을 지정하지 않아 유연하게 프로그래밍 가능                                                                                                                                                       | - 변수를 선언할때 타입을 명시해서 작성하므로 한번 결정된 타입은 절대 바뀔 수가 없음. 즉, 내가 코딩을 할 때 경고 메세지를 받아 볼 수가 있어서 조금 더 엄격하게 관리할 수 있다<br> - 객체지향언어이다. |
 | 단점 | - 변수에 할당된 값을 토대로 타입이 동적으로 변하다 보니까 런타임 환경전에는 에러메세지를 받지못해 디버깅에 취약함<br> - 프로젝트가 커질수록 동적으로 받는 변수가 의도치않는 에러를 발생시킬 수 있음 | 코드를 짤 때 타입을 고려하고 설계해야 됨                                                                                                                                                             |
 
-#### **타입스크립트 도입으로 인한 장점**
+#### **TypeScript 도입으로 인한 장점**
 
 - 타입의 도입으로 코드 가독성이 높아진다. (Ex) 이 변수에는 어떤 데이터를 담고, 이 함수에는 어떤 인자값을 받는지 한눈에 확인가능)
 - 사용자가 런타임환경에서 에러를 발견하는 회수보다, 컴파일단계에서 미리 디버깅을 해서 에러의 빈도수를 줄일 수 있다.
@@ -81,7 +97,7 @@
 - 상속(Inheritance)
 - 다형성(Polymorphism)
 
-### 1-1. 실제 Refactoring 된 Typescript code
+### 실제 Refactoring 된 Typescript code
 
 > 아래는 리팩토링 된 일부 코드들이다. 얼핏보면 type 및 interface를 정의하니 가독성이 더 떨어진 것 같지만, parameter가 어떤 타입을 받는지 정확히 명시하고 return 타입을 정확히 명시해 둠으로서, 실제로는 타입을 명시하므로써 코드이해도가 높아지며, 해당 타입 이외에는 에러를 표시해줘 버그를 최소화하는 코드를 짤 수 있다.
 
@@ -137,7 +153,7 @@
 
 ```
 
-### 1-2. 어떨때 interface와 type을 쓰는 것일까?
+### 어떨때 interface와 type을 쓰는 것일까?
 
 - Typescript에서 interface와 type은 같은용도로 쓰이는것으로 보인다. 그럼다면 두개를 쓰는 기준은 무엇일까?
 
@@ -170,13 +186,13 @@ interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class 
 <br>
 <br>
 
-## 2. 상태관리 lib Redux-Toolkit 도입
+## 2-2장. 상태관리 lib Redux-Toolkit 도입
 
 ![redux](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJBsnR%2FbtrkvJeN6JL%2F0AhOXGQQSulW9ECnvl6YQK%2Fimg.png)
 
 [Redux 사진 출처](https://www.slideshare.net/binhqdgmail/006-react-redux-framework)
 
-### 2-1. Redux가 필요한 이유
+### Redux가 필요한 이유
 
 - props 문법이 번거롭고, 하위 Component로 props를 보내야할게 많을때
 - state의 변경관리를 쉽게하기 위해
@@ -189,7 +205,7 @@ interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class 
   <br>
   <br>
 
-### 2-2. 실제 Refactoring 된 code
+### 실제 Refactoring 된 code
 
 - 아래 코드는 해당 프로젝트 maker.tsx file return type 코드들이다. 하위 Component에 props를 넘기고, 해당 props를 다시 maker.tsx 상위로 불러와 function을 실행하여 작업을 수행하는 형식으로 이루어져있다.
 
