@@ -4,8 +4,9 @@
 
 ## index
 
-[프로젝트 작동설명](#프로젝트-작동설명)
-[Prerequisite (전제조건)](<#prerequisite-(전제조건)>)
+[Project Name](#project-name)
+[작동설명](#프로젝트-작동설명)
+[Prerequisite (전제조건)](#prerequisite-[전제조건])
 
 ### 프로젝트 작동설명
 
@@ -44,7 +45,7 @@
 
   - Redux-toolkit v 1.6
 
-## Prerequisite (전제조건)
+## Prerequisite [전제조건]
 
 - Firebase Auth API key
 - Firebase realtime database API key
