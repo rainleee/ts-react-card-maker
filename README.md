@@ -1,4 +1,22 @@
-# TypeScript & React / Redux / Firebase를 이용한 명함만들기 프로젝트
+# Project Name: Business Card Maker (명함만들기)
+
+- 작성한 내용을 토대로 명함을 만들어주는 웹 프로젝트이다. 로그인 후 사용자의 연동된 정보를 통해 계정마다 저장된 명함을 볼 수 있다. Maker section을 통해 명함의 정보를 추가하거나 수정할 수 있으며, 이미지 등록이 가능하다. 또한, Preview section을 통해 완성된 명함을 볼 수 있다.
+
+<br>
+
+### 프로젝트 작동설명
+
+1. firebase auth를 통한 google이나 github 계정을 통해 로그인한다.
+
+   - login은 해당계정의 식별을 위해서 필요한것으로, 개인정보는 수집하지않는다.
+
+2. login이 정상적으로 됐을 시, 왼쪽은 card의 정보를 입력하는 maker UI를, 왼쪽은 maker에서 입력된 정보를 카드로 출력해주는 preview UI를 보여준다. (react Router 사용)
+
+3. maker / preview는 저장된 data를 전부 보여주는것이 아닌, 해당 계정에 로그인된 계정에 저장된 card만 보여주며, maker의 입력정보는 이름, 회사명, 배경색, 직급, 이메일, 자기소개, 사진을 입력한다. (파일업로드 시 로딩스피넛 기능 있음)
+
+4. 저장된 정보는 delete 버튼을 눌러 삭제할 수 있으며, maker 최하단에는 새로 생성할 카드정보를 입력할 수 있다.
+
+5. 최상단 오른쪽에 logout 버튼을 눌러 계정을 변경할 수 있다.
 
 - Front-End: TypeScript & React
 - State Management: Redux-toolkit
@@ -13,7 +31,6 @@
   - HTML5 & CSS3
   - React v 17.0
   - Axios v 0.23
-  - Redux-toolkit v 1.6
 
 - back-end
 
@@ -24,6 +41,10 @@
   - Firebase Auth
   - Cloudnary Storage - image cloud storage
 
+- State Management
+
+  - Redux-toolkit v 1.6
+
 ## Prerequisite (전제조건)
 
 - Firebase Auth API key
@@ -31,27 +52,12 @@
 - cloudnary API key
 - 노드환경파일 .env에 API key를 보관하였다. 각자의 환경에 맞춰서 API key를 공개하지말고 구현할것.
 
-## Project Name: Business Card Maker (명함만들기)
-
-> 작성한 내용을 토대로 명함을 만들어주는 웹 프로젝트이다. 로그인 후 사용자의 연동된 정보를 통해 계정마다 저장된 명함을 볼 수 있다. Maker section을 통해 명함의 정보를 추가하거나 수정할 수 있으며, 이미지 등록이 가능하다. 또한, Preview section을 통해 완성된 명함을 볼 수 있다.
-
-## 프로젝트 작동설명
-
-1. firebase auth를 통한 google이나 github 계정을 통해 로그인한다.
-
-   - login은 해당계정의 식별을 위해서 필요한것으로, 개인정보는 수집하지않는다.
-
-2. login이 정상적으로 됐을 시, 왼쪽은 card의 정보를 입력하는 maker UI를, 왼쪽은 maker에서 입력된 정보를 카드로 출력해주는 preview UI를 보여준다. (react Router 사용)
-
-3. maker / preview는 저장된 data를 전부 보여주는것이 아닌, 해당 계정에 로그인된 계정에 저장된 card만 보여주며, maker의 입력정보는 이름, 회사명, 배경색, 직급, 이메일, 자기소개, 사진을 입력한다. (파일업로드 시 로딩스피넛 기능 있음)
-
-4. 저장된 정보는 delete 버튼을 눌러 삭제할 수 있으며, maker 최하단에는 새로 생성할 카드정보를 입력할 수 있다.
-
-5. 최상단 오른쪽에 logout 버튼을 눌러 계정을 변경할 수 있다.
+<br>
+<br>
 
 # Code Refactoring
 
-## 1. Javascript => TypeScript로 Refactoring
+### 1. Javascript => TypeScript로 Refactoring
 
 - 아래표를 보면서 두 언어의 차이점을 보자. 이러한 차이점과 객체지향언어의 장점으로 TypeScript로 리팩토링을 진행했다.
 
@@ -68,9 +74,13 @@
 - 사용자가 런타임환경에서 에러를 발견하는 회수보다, 컴파일단계에서 미리 디버깅을 해서 에러의 빈도수를 줄일 수 있다.
 - 객체지향 프로그래밍(Object-Oriented Programming 이하 OOP)이 가능하다.
 
+<br>
+<br>
+
 ### OOP의 장점
 
-![사진넣기]()
+![OOP 특징 4가지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCuDN3%2FbtrkHbBEHwZ%2F9TzDqYVW0968EWQ6LBFIY0%2Fimg.png)
+[출처 드림코딩](https://www.youtube.com/watch?v=ZZib1YpxNdg&t)
 
 - 캡슐화(Encapsulation)
 - 추상화(Abstraction)
@@ -137,9 +147,9 @@
 
 - Typescript에서 interface와 type은 같은용도로 쓰이는것으로 보인다. 그럼다면 두개를 쓰는 기준은 무엇일까?
 
-|     |                                     interface                                     |                                      type                                      |
-| :-: | :-------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
-|     | 어떤 특정한 규격을 정의하고,<br>그 규격을 통해서 구현할 것이 필수적으로 필요할 때 | 어떠한 데이터를 담을때,<br>어떠한 데이터를 담을 수 있을지 데이터 타입을 정할때 |
+|                                     interface                                     |                                      type                                      |
+| :-------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| 어떤 특정한 규격을 정의하고,<br>그 규격을 통해서 구현할 것이 필수적으로 필요할 때 | 어떠한 데이터를 담을때,<br>어떠한 데이터를 담을 수 있을지 데이터 타입을 정할때 |
 
 ```typeScript
   // data type define
