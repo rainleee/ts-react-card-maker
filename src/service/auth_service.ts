@@ -12,13 +12,10 @@ import {
   author rainlee
   */
 
-// TODO: 이 타입들 나중에 한곳에 모아두고 import하기
 type AuthChangeUserFn = (user: FirebaseUser) => void;
 
 // login 시 type
 type LoginProvider = typeof googleProvider | typeof githubProvider;
-
-// type FirebaseAuthSign = Promise<firebase.auth.UserCredential>;
 
 // auth 시도 시 필수 function
 interface FirebaseAuthService {
@@ -27,6 +24,9 @@ interface FirebaseAuthService {
   logout(): Promise<void>;
   getProvider(providerName: string): LoginProvider;
 }
+
+const GOOGLE_PROVIDER_NAME = 'Google';
+const GITHUB_PROVIDER_NAME = 'Github';
 
 class AuthService implements FirebaseAuthService {
   //login service
@@ -48,9 +48,9 @@ class AuthService implements FirebaseAuthService {
 
   getProvider(providerName: string): LoginProvider {
     switch (providerName) {
-      case 'Google':
+      case GOOGLE_PROVIDER_NAME:
         return googleProvider;
-      case 'Github':
+      case GITHUB_PROVIDER_NAME:
         return githubProvider;
       default:
         throw new Error(`not supported provider: ${providerName}`);

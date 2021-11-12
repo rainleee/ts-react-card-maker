@@ -79,6 +79,93 @@
 
 ### 실제 Refactoring 된 Typescript code
 
+> 아래는 리팩토링 된 일부 코드들이다. 얼핏보면 type 및 interface를 정의하니 가독성이 더 떨어진 것 같지만, parameter가 어떤 타입을 받는지 정확히 명시하고 return 타입을 정확히 명시해 둠으로서, 실제로는 타입을 명시하므로써 코드이해도가 높아지며, 해당 타입 이외에는 에러를 표시해줘 버그를 최소화하는 코드를 짤 수 있다.
+
+- Javascript code
+
+```javaScript
+// auth_service.js class AuthService
+  login(providerName) {
+    const authProvider = this.getProvider(providerName);
+    return firebaseAuth.signInWithPopup(authProvider);
+  }
+
+  onAuthChange(onUserChanged) {
+    firebaseAuth.onAuthStateChanged(user => {
+      onUserChanged(user);
+    });
+  }
+
+  logout() {
+    return firebaseAuth.signOut();
+  }
+```
+
+- Typescript code
+
+```typeScript
+
+  // type & interface define
+  type AuthChangeUserFn = (user: FirebaseUser) => void;
+  type LoginProvider = typeof googleProvider | typeof githubProvider;
+  interface FirebaseAuthService {
+    login(providerName: string): UserCredential;
+    onAuthChange(onUserChanged: Function): void;
+    logout(): Promise<void>;
+    getProvider(providerName: string): LoginProvider;
+  }
+
+  // auth_service.ts class AuthService
+  login(providerName: string): UserCredential {
+      const authProvider = this.getProvider(providerName);
+      return firebaseAuth.signInWithPopup(authProvider);
+  }
+
+  onAuthChange(onUserChanged: AuthChangeUserFn) {
+    firebaseAuth.onAuthStateChanged(user => {
+      onUserChanged(user);
+    });
+  }
+
+  logout(): Promise<void> {
+    return firebaseAuth.signOut();
+  }
+
+```
+
+### 어떨때 interface와 type을 쓰는 것일까?
+
+- Typescript에서 interface와 type은 같은용도로 쓰이는것으로 보인다. 그럼다면 두개를 쓰는 기준은 무엇일까?
+
+|     |                                     interface                                     |                                      type                                      |
+| :-: | :-------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+|     | 어떤 특정한 규격을 정의하고,<br>그 규격을 통해서 구현할 것이 필수적으로 필요할 때 | 어떠한 데이터를 담을때,<br>어떠한 데이터를 담을 수 있을지 데이터 타입을 정할때 |
+
+```typeScript
+  // data type define
+  type AuthChangeUserFn = (user: FirebaseUser) => void;
+  type LoginProvider = typeof googleProvider | typeof githubProvider;
+```
+
+위의 코드를 본다면 타입은 해당 데이터가 어떤타입인지 명시했을 뿐이며,
+
+```typeScript
+  interface FirebaseAuthService {
+    login(providerName: string): UserCredential;
+    onAuthChange(onUserChanged: Function): void;
+    logout(): Promise<void>;
+    getProvider(providerName: string): LoginProvider;
+  }
+
+  // interface implements
+  class AuthService implements FirebaseAuthService {}
+```
+
+interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class implements를 통해 구현한 것을 확인할 수 있다.
+
+<br>
+<br>
+
 ## 2. 상태관리 lib Redux-Toolkit 도입
 
 ![redux](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJBsnR%2FbtrkvJeN6JL%2F0AhOXGQQSulW9ECnvl6YQK%2Fimg.png)
@@ -199,15 +286,3 @@ return (
   <Preview />)
 );
 ```
-
-## 2.필요한 스킬과 자료
-
-- react의 장점에 대해선 유투브 프로젝트에서 남기기, 여기선 타입스크립트에 대한 내용을 남길것.
-
-- docs를 따로 만들때, 타입스크립트 type과 interface의 차이점을 구분하고 사용한 이유를 쓰기(드림코딩 한번 보고)
-
-- 마지막에 출처 제대로 남기기
-
-- 각 구현한 곳에서 사용한 기술을 정리해서 만듦(Auth, realtimedatabase, image upload, react JSX Ele...etc)
-
-## 3.내가 취업하고자 하는 기업에서 원하는 역량 분석
