@@ -2,13 +2,18 @@
 
 - 작성한 내용을 토대로 명함을 만들어주는 웹 프로젝트이다. 로그인 후 사용자의 연동된 정보를 통해 계정마다 저장된 명함을 볼 수 있다. Maker section을 통해 명함의 정보를 추가하거나 수정할 수 있으며, 이미지 등록이 가능하다. 또한, Preview section을 통해 완성된 명함을 볼 수 있다.
 
+- 해야할것
+
+1. 맞춤법 검사하기
+2. 인덱스 제대로 만들기
+
 ## index
 
 - [Project Name](#project-name:-business-card-maker)
 
 1. [프로젝트 설명](#1장.-프로젝트설명)
    - [Environment](#설치언어-버전-및-사용스킬)
-   - [Prerequisite](#1-2.-prerequisite-전제조건)
+   - [Prerequisite](#prerequisite-전제조건)
 2. [Code Refactoring](#2장.-code-refactoring)
    1. [TypeScript](#1.-javascript-=>-typescript로-refactoring)
       - [Typescript로 Refactoring한 이유는?](#typescript로-Refactoring한-이유는?)
