@@ -22,8 +22,8 @@
       - [interface와 type의 차이점](#어떨때-interface와-type을-쓰는-것일까?)
    2. [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
       - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
-      - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
-      - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
+      - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
+      - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
 
 ## 1장. 프로젝트설명
 
