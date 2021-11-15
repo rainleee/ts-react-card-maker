@@ -8,9 +8,9 @@
 
 - [Project Name](#project-name:-business-card-maker)
 
-1. [프로젝트 설명](#1장.-프로젝트설명)
-   - [Environment](#설치언어-버전-및-사용스킬)
-   - [Prerequisite](#prerequisite-전제조건)
+1. [프로젝트 설명](#1장.프로젝트설명)
+   - [Environment](#environment)
+   - [Prerequisite](#prerequisite)
 2. [Code Refactoring](#2장.-code-refactoring)
    1. [TypeScript](#1.-javascript-=>-typescript로-refactoring)
       - [Typescript로 Refactoring한 이유는?](#typescript로-Refactoring한-이유는?)
@@ -23,7 +23,7 @@
       - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
 3. [마무리하며](#3장.마무리하며)
 
-## 1장. 프로젝트설명
+## 1장.프로젝트설명
 
 1. firebase auth를 통한 google이나 github 계정을 통해 로그인한다.
 
@@ -62,7 +62,7 @@
 
   - Redux-toolkit v 1.6
 
-## Prerequisite 전제조건
+## Prerequisite
 
 - Firebase Auth API key
 - Firebase realtime database API key
