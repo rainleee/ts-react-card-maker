@@ -207,6 +207,8 @@ interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class 
   <br>
   <br>
 
+  정리된 사항은 [rainlee 티스토리](https://rainlee-develop-well.tistory.com/37)에서도 확인가능하다.
+
 ### 실제 Refactoring 된 code
 
 - 아래 코드는 해당 프로젝트 maker.tsx file return type 코드들이다. 하위 Component에 props를 넘기고, 해당 props를 다시 maker.tsx 상위로 불러와 function을 실행하여 작업을 수행하는 형식으로 이루어져 있다.
