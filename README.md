@@ -12,11 +12,11 @@
    - [Environment](#environment)
    - [Prerequisite](#prerequisite)
 2. [Code Refactoring](#2장-code-refactoring)
-   1. [TypeScript](#1-javascript-=>-typescript로-refactoring)
-      - [Typescript로 Refactoring한 이유는?](#typescript로-Refactoring한-이유는?)
-      - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점)
-      - [Refactoring Code](#실제-refactoring-된-typescript-code)
-      - [interface와 type의 차이점](#어떨때-interface와-type을-쓰는-것일까?)
+   1. [TypeScript](#2-1장-javascript에서-typeScript로-refactoring)
+      - [Typescript로 Refactoring한 이유는?](#typescript로-refactoring한-이유)
+      - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점) O
+      - [Refactoring Code](#실제-refactoring-된-typescript-code) O
+      - [interface와 type의 차이점](#interface와-type의-차이점)
    2. [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
       - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
       - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
@@ -71,9 +71,9 @@
 
 # 2장 Code Refactoring
 
-## 2-1장 Javascript => TypeScript로 Refactoring
+## 2-1장 Javascript에서 TypeScript로 Refactoring
 
-### Typescript로 Refactoring한 이유는?
+### Typescript로 Refactoring한 이유
 
 - 아래 표를 보면서 두 언어의 차이점을 보자. 이러한 차이점과 객체지향언어의 장점으로 TypeScript로 리팩토링을 진행했다.
 
@@ -156,7 +156,7 @@
 
 ```
 
-### 어떨 때 interface와 type을 쓰는 것일까?
+### interface와 type의 차이점
 
 - Typescript에서 interface와 type은 같은 용도로 쓰이는 것으로 보인다. 그렇다면 두 가지를 쓰는 기준은 무엇일까?
 
