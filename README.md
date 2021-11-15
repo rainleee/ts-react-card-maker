@@ -8,7 +8,7 @@
 
 - [Project Name](#project-name:-business-card-maker)
 
-1. [프로젝트 설명](#1장.프로젝트설명)
+1. [프로젝트 설명](#1장-프로젝트설명)
    - [Environment](#environment)
    - [Prerequisite](#prerequisite)
 2. [Code Refactoring](#2장.-code-refactoring)
@@ -23,7 +23,7 @@
       - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
 3. [마무리하며](#3장.마무리하며)
 
-## 1장.프로젝트설명
+## 1장 프로젝트설명
 
 1. firebase auth를 통한 google이나 github 계정을 통해 로그인한다.
 
