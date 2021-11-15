@@ -17,7 +17,7 @@
       - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점)
       - [Refactoring Code](#실제-refactoring-된-typescript-code)
       - [interface와 type의 차이점](#interface와-type의-차이점)
-   2. [Redux-Toolkit 도입](#2-상태관리-lib-redux-toolkit-도입)
+   2. [Redux-Toolkit 도입](#2-2장-상태관리-lib-redux-toolkit-도입)
       - [Redux가 필요한 이유](#redux가-필요한-이유)
       - [Refactoring Code](#실제-refactoring-된-code)
 3. [마무리하며](#3장-마무리하며)
@@ -188,7 +188,7 @@ interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class 
 <br>
 <br>
 
-## 2-2장 상태관리 lib Redux-Toolkit 도입
+## 2-2장 상태관리 lib Redux Toolkit 도입
 
 ![redux](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJBsnR%2FbtrkvJeN6JL%2F0AhOXGQQSulW9ECnvl6YQK%2Fimg.png)
 
@@ -310,7 +310,5 @@ return (
 ```
 
 ## 3장 마무리하며
-
----
 
 아직 이 프로젝트는 바꾸고 싶은 점이 너무 많아 마무리라는 말이 맞을까 싶다. 하지만 일정 기능을 완성한 지금, 프로젝트를 진행한 소감을 적어두려 한다. 가장 기억에 남는 것은 리팩토링이다. 리팩토링을 진행하면서 직접 내가 사용할 언어나 라이브러리를 조사하고 찾아볼 때 재미와 희열을 느꼈다.<br> 리팩토링을 하지 않았어도 별 문제 없이 프로그램이 돌아갔다. 하지만 내 스스로 조금 더 견고한 코드를 만들기 위해 고민하여 새로운 것을 배우고 이를 바탕으로 좀 더 깔끔하게 작동하는 코드들을 보니 만족감과 희열이 찾아왔다. 하지만 진행할수록 내가 얼마나 부족한지도 깨닫게 되었는데, 이 세상엔 내가 모르는 편리하고 좋은 코드들이 많은 것 같다. 이러한 지식을 꾸준히 습득하여 더욱더 성장하는 개발자가 되고 싶다. 이 프로젝트도 아직 끝난 것이 아니다. 더욱더 기능을 추가하고 그 기능들을 문서로도 남겨두도록 하겠다.
