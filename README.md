@@ -6,13 +6,13 @@
 
 ## index
 
-- [Project Name](#project-name:-business-card-maker)
+- Project Name: Business Card Maker
 
 1. [프로젝트 설명](#1장-프로젝트설명)
    - [Environment](#environment)
    - [Prerequisite](#prerequisite)
-2. [Code Refactoring](#2장.-code-refactoring)
-   1. [TypeScript](#1.-javascript-=>-typescript로-refactoring)
+2. [Code Refactoring](#2장-code-refactoring)
+   1. [TypeScript](#1-javascript-=>-typescript로-refactoring)
       - [Typescript로 Refactoring한 이유는?](#typescript로-Refactoring한-이유는?)
       - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점)
       - [Refactoring Code](#실제-refactoring-된-typescript-code)
@@ -69,9 +69,9 @@
 - cloudnary API key
 - 노드환경파일 .env에 API key를 보관하였다. 각자의 환경에 맞춰서 API key를 공개하지 말고 구현할 것.
 
-# 2장. Code Refactoring
+# 2장 Code Refactoring
 
-## 2-1장. Javascript => TypeScript로 Refactoring
+## 2-1장 Javascript => TypeScript로 Refactoring
 
 ### Typescript로 Refactoring한 이유는?
 
