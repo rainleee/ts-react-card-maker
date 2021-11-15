@@ -14,14 +14,13 @@
 2. [Code Refactoring](#2장-code-refactoring)
    1. [TypeScript](#2-1장-javascript에서-typeScript로-refactoring)
       - [Typescript로 Refactoring한 이유는?](#typescript로-refactoring한-이유)
-      - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점) O
-      - [Refactoring Code](#실제-refactoring-된-typescript-code) O
+      - [TypeScript 도입으로 인한 장점](#typeScript-도입으로-인한-장점)
+      - [Refactoring Code](#실제-refactoring-된-typescript-code)
       - [interface와 type의 차이점](#interface와-type의-차이점)
-   2. [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
-      - [Redux-Toolkit 도입](#2.-상태관리-lib-Redux-Toolkit-도입)
-      - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
-      - [도입](#2.-상태관리-lib-Redux-Toolkit-도입)
-3. [마무리하며](#3장.마무리하며)
+   2. [Redux-Toolkit 도입](#2-상태관리-lib-redux-toolkit-도입)
+      - [Redux가 필요한 이유](#redux가-필요한-이유)
+      - [Refactoring Code](#실제-refactoring-된-code)
+3. [마무리하며](#3장-마무리하며)
 
 ## 1장 프로젝트설명
 
@@ -189,7 +188,7 @@ interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class 
 <br>
 <br>
 
-## 2-2장. 상태관리 lib Redux-Toolkit 도입
+## 2-2장 상태관리 lib Redux-Toolkit 도입
 
 ![redux](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJBsnR%2FbtrkvJeN6JL%2F0AhOXGQQSulW9ECnvl6YQK%2Fimg.png)
 
@@ -201,7 +200,7 @@ interface는 구현을 위해 모아둔 변수 및 method의 집합으로 class 
 - state의 변경관리를 쉽게 하기 위해
 - 찢어져 있는 props를 한 파일에 보관하여 관리가 쉽고 수정사항이 있으면 한곳에서 수정하면 되니 유지 보수성이 좋아진다.
 
-#### **Redux-saga, Redux-thunk, MboX 등 여러 가지가 있지만 그중 Redux-Toolkit(이하 RTK)을 선택한 이유는??**
+#### **Redux-saga,-Redux-thunk,-MboX-등-여러-가지가-있지만-그중 Redux-Toolkit(이하 RTK)을 선택한 이유**
 
 - 리덕스에서 자주 쓰는 기능들을 모두 다 모아둔 라이브러리. Thunk, Saga, Immer가 내장된 리덕스팀에서 공식적으로 만든 라이브러리.
 - 규격화된 패턴과 변수명칭(?)이 존재하여 배우는 입장에서나 유지 보수적인 측면에서 이해가 쉬워 선택하였다. MobX의 경우는 간단한 문법과 쉬운 사용법으로 쓰려고 했으나 가독성을 위해 '@' 문구를 사용하는 decorator syntax를 지원하지만, 글을 작성하고 있는 현재(21/11/11) 공식적으로 지원하고 있지 않기에 언제 문법이 변할지 몰라 RTK처럼 패턴화가 되어있는 라이브러리를 선택했다.
@@ -310,7 +309,7 @@ return (
 );
 ```
 
-## 3장.마무리하며
+## 3장 마무리하며
 
 ---
 
