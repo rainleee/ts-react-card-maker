@@ -6,7 +6,7 @@
 
 - 이 홈페이지는 크롬 기준으로 개발되었으며, 다른 브라우저상에서 제대로 안나올 수 있습니다.
 
-## index
+## Index
 
 - Project Name: Business Card Maker
 
@@ -54,7 +54,7 @@
 
   - Node js v 16.10
   - NPM
-  - yarn
+  - Yarn
   - Firebase Realtime Database
   - Firebase Auth
   - Cloudnary Storage - image cloud storage
