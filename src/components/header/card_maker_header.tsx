@@ -1,6 +1,5 @@
 import styles from './card_maker_header.module.css';
 
-// CardMakerHeader
 type CardMakerHeaderPorps = {
   onLogout?: () => void;
 };

@@ -138,7 +138,6 @@ function CardEditForm({
         <FileInput name={fileName} onFileChange={onFileChange} />
       </div>
       <Button name='Delete' onClick={onSubmitDelete} />
-      {/* <Button /> */}
     </form>
   );
 }

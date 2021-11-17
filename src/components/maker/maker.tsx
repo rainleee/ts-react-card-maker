@@ -64,26 +64,3 @@ function Maker({ FileInput, authService, dbConnection }: InitProps) {
 }
 
 export default Maker;
-
-/**
- * TODO: 나중에 포폴 문서에 남길것.
- *  타입스크립트를 쓰는 이유
-    const [cards, setCards] = useState<UserPersonalCards>({ id: { id: '' } });
-  const [userId, setUserId] = useState<string>(
-    historyState && (historyState as StateHistory).id
-  );
-  기존에는 useState를 제네릭없이 하거나 {}, null을 이용해 포괄적인 타입을 담아 any타입을 선언한것과 다름없었다.
-
-  위에 코드에서 UserPersonalCards는 CardMetaData를 묶어놓은 객체타입인데, 
-
-  onst stopSync = dbConnection.syncCards(
-      userId,
-      /// *** (cards: UserPersonalCards) => {
-        setCards(cards);
-      }
-    );
-
-    위 코드 중 ***인곳에 cards들을 선언해 놓고 아무거나 담을 수 있었다. 결국엔 넣을값과 선언한 타입이 일치해야 에러가 안나는데 
-    내가 card's'를 card로 착각해서 다른 CardMetaData 타입을 선언해 놨는데 아무문제 되지않았다. 그래서 초기화 할때도 객체타입을
-    정확히 명시해두면 코드를짤때 해당객체 규격안에서 해야하므로 참 중요하게 배운 사건이다. 
-*/
