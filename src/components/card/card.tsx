@@ -2,7 +2,6 @@ import React from 'react';
 import { CardMetaData } from '../../store/models';
 import styles from './card.module.css';
 
-// TODO: 한곳에 몰아넣기
 const DEFAULT_IMAGE = '/images/default_logo.png';
 
 function Card({ card }: { card: CardMetaData }) {
@@ -32,7 +31,6 @@ function Card({ card }: { card: CardMetaData }) {
     </li>
   );
 }
-// TODO: function 자리를 어디다 둘지 생각하기
 function getStyles(theme: string) {
   switch (theme) {
     case 'dark':

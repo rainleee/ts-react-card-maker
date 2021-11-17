@@ -1,4 +1,3 @@
-// TODO: index 정의
 import { combineReducers } from 'redux';
 import { cardSlice } from './cardSlice';
 

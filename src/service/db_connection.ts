@@ -6,7 +6,6 @@ import { firebaseDatabase } from './firebase';
   firebase database connection class
   author rainlee
   */
-// TODO: doc작업 여기처럼 해놓고 params에 대해 써놓기
 interface Database {
   saveCard(userId: string, card: CardMetaData): void;
   removeCard(userId: string, cardId: CardMetaData['id']): void;

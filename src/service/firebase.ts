@@ -10,8 +10,6 @@ type FirebaseConfig = {
 };
 
 const firebaseConfig: FirebaseConfig = {
-  // TODO: env에 있는 API keys를 다른방식으로 구현하기 (string | undefined)로 되어있어서 강제 캐스팅을 해야함.
-  // 하지만 꼭 존재해야 하는 값이기 때문에 다른방식이 좋을것 같음.
   apiKey: process.env!.REACT_APP_FIREBASE_API_KEY as string,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN as string,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID as string,

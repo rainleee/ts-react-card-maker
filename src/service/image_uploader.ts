@@ -26,7 +26,7 @@ class ImageUploader {
     formData.append('file', file);
     formData.append(
       'upload_preset',
-      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET as string //TODO: casting 재정의
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET as string
     );
 
     const response: AxiosResponse<any, any> = await this.imageUploader.post(

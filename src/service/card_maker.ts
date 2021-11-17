@@ -5,9 +5,3 @@ interface MakerProps {
   deleteCard: (card: CardMetaData) => void;
   onLogout: (card: CardMetaData) => void;
 }
-// TODO: keep
-// class CardMaker implements MakerProps {
-
-// }
-
-// export default CardMaker;
