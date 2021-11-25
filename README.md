@@ -1,4 +1,4 @@
-# Project Name: Business Card Maker
+# Project Name: Business Card Maker.
 
 - 최종버전 1.0 ver (2021/11/15)
 
