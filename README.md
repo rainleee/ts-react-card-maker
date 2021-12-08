@@ -97,9 +97,6 @@
 
 ### OOP의 장점
 
-![OOP 특징 4가지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCuDN3%2FbtrkHbBEHwZ%2F9TzDqYVW0968EWQ6LBFIY0%2Fimg.png)
-[출처 드림코딩](https://www.youtube.com/watch?v=ZZib1YpxNdg&t)
-
 - 캡슐화(Encapsulation)
 - 추상화(Abstraction)
 - 상속(Inheritance)
